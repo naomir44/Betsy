@@ -16,12 +16,6 @@ class User(db.Model, UserMixin):
 
     reviews = db.relationship('Review', back_populates='users', cascade='all, delete-orphan')
     favorites = db.relationship('Favorite', back_populates='users', cascade='all, delete-orphan')
-
-
-    products = db.relationship('Product', back_populates='users', cascade='all, delete-orphan')
-    cart_item = db.relationship('CartItem', back_populates='users', cascade='all, delete-orphan')
-
-
     products = db.relationship('Product', back_populates='users', cascade='all, delete-orphan')
     cart_item = db.relationship('CartItem', back_populates='users', cascade='all, delete-orphan')
 
