@@ -1,4 +1,8 @@
 from .db import db, environment, SCHEMA
+from .cart_items import CartItem
+from .user import User
+from .reviews import Review
+from .favorites import Favorite
 
 
 class Product(db.Model):
