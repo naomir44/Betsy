@@ -10,4 +10,4 @@ class Image(db.Model):
     url = db.Column(db.String, nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
 
-    products = db.relationship('Product', back_populates='images')
+    products = db.relationship('Product', back_populates='images', foreign_keys=[product_id])

@@ -3,14 +3,14 @@ from .db import db, environment, SCHEMA
 # from .products import Product
 
 class Favorite(db.Model):
- __tablename__ = 'favorites'
+      __tablename__ = 'favorites'
 
-if environment == "production":
-      __table_args__ = {'schema': SCHEMA}
+      if environment == "production":
+            __table_args__ = {'schema': SCHEMA}
 
-id = db.Column(db.Integer, primary_key=True)
-user_id = db.Column(db.Integer, db.ForeignKey('users.id', onDelete='CASCADE'), nullable=False)
-product_id = db.Column(db.Integer, db.ForeignKey('products.id', onDelete='CASCADE'), nullable=False)
+      id = db.Column(db.Integer, primary_key=True)
+      user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+      product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
 
-users = db.relationship('User', back_populates='favorites')
-products = db.relationship('Product', back_populates='favorites')
+      users = db.relationship('User', back_populates='favorites')
+      products = db.relationship('Product', back_populates='favorites')
