@@ -12,5 +12,5 @@ id = db.Column(db.Integer, primary_key=True)
 user_id = db.Column(db.Integer, db.ForeignKey('users.id', onDelete='CASCADE'), nullable=False)
 product_id = db.Column(db.Integer, db.ForeignKey('products.id', onDelete='CASCADE'), nullable=False)
 
-user = db.relationship('User', back_populates='favorites')
-product = db.relationship('Product', back_populates='favorites')
+users = db.relationship('User', back_populates='favorites')
+products = db.relationship('Product', back_populates='favorites')

@@ -14,5 +14,5 @@ class Review(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
   product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
 
-  user = db.relationship('User', back_populates='reviews')
-  product = db.relationship('Product', back_populates='reviews')
+  users = db.relationship('User', back_populates='reviews')
+  products = db.relationship('Product', back_populates='reviews')

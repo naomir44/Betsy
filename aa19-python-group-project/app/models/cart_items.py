@@ -13,5 +13,5 @@ class CartItem(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE', nullable=False))
     quantity = db.Column(db.Integer, nullable=False)
 
-    user = db.relationship('User', back_populates='cart_items')
-    product = db.relationship('Product', back_populates='cart_items')
+    users = db.relationship('User', back_populates='cart_items')
+    products = db.relationship('Product', back_populates='cart_items')
