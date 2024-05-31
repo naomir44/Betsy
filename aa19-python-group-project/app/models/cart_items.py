@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA
-from .user import User
-from .products import Product
+# from .user import User
+# from .products import Product
 
 class CartItem(db.Model):
     __tablename__ = 'cart_items'

@@ -1,10 +1,10 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .reviews import Review
-from .favorites import Favorite
-from .cart_items import CartItem
-from .products import Product
+# from .reviews import Review
+# from .favorites import Favorite
+# from .cart_items import CartItem
+# from .products import Product
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
