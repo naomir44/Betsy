@@ -11,3 +11,10 @@ class Image(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete='CASCADE'), nullable=False)
 
     products = db.relationship('Product', back_populates='images', foreign_keys=[product_id])
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'url': self.url,
+            'product_id': self.product_id
+        }
