@@ -38,6 +38,8 @@ def upgrade():
     sa.Column('rating', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('product_id', sa.Integer(), nullable=False),
+    sa.Column('created_at', sa.DateTime()),
+    sa.Column('updated_at', sa.DateTime()),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
     sa.PrimaryKeyConstraint('id'),
     sa.ForeignKeyConstraint(['product_id'], ['products.id'])
@@ -49,9 +51,7 @@ def upgrade():
     sa.Column('description', sa.String(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('image_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
-    sa.ForeignKeyConstraint(['image_id'], ['images.id']),
     sa.PrimaryKeyConstraint('id')
     )
 
