@@ -16,7 +16,7 @@ class Product(db.Model):
     description = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
-    # image_id = db.Column(db.Integer, db.ForeignKey('images.id', ondelete='CASCADE'), nullable =False)
+    image_id = db.Column(db.Integer, db.ForeignKey('images.id', ondelete='CASCADE'), nullable =False)
 
     users = db.relationship('User', back_populates='products')
     # images = db.relationship('Image', back_populates='products', foreign_keys='Image.product_id', cascade='all, delete-orphan')
@@ -32,6 +32,6 @@ class Product(db.Model):
             'description': self.description,
             'price': self.price,
             'user_id': self.user_id,
-            'images': [image.to_dict() for image in self.images]
-            # 'image_id': self.image_id
+            'images': [image.to_dict() for image in self.images],
+            'image_id': self.image_id
         }

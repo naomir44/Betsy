@@ -21,7 +21,8 @@ def add_review(product_id):
         user_id=current_user.id,
         product_id=product.id,
         content=data['content'],
-        rating=data['rating']
+        rating=data['rating'],
+        created_at=data['created_at']
     )
     db.session.add(new_review)
     db.session.commit()
