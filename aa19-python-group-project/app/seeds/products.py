@@ -7,30 +7,35 @@ def seed_products():
         description='A beautiful handmade wooden bowl crafted from oak.',
         price=2500,
         user_id=1,
+        category_id=4
     )
     product2 = Product(
         name='Custom Leather Wallet',
         description='A personalized leather wallet with initials embossed.',
         price=1500,
         user_id=2,
+        category_id=2
     )
     product3 = Product(
         name='Ceramic Vase',
         description='A hand-painted ceramic vase with floral designs.',
         price=3000,
         user_id=1,
+        category_id=1
     )
     product4 = Product(
         name='Knitted Scarf',
         description='A cozy knitted scarf made from wool.',
         price=1200,
         user_id=3,
+        category_id=2
     )
     product5 = Product(
         name='Soy Wax Candle',
         description='A fragrant soy wax candle with lavender scent.',
         price=800,
         user_id=2,
+        category_id=4
     )
 
     db.session.add(product1)

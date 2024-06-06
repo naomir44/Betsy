@@ -51,7 +51,9 @@ def upgrade():
     sa.Column('description', sa.String(), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('category_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+    sa.ForeignKeyConstraint(['category_id'], ['categories.id']),
     sa.PrimaryKeyConstraint('id')
     )
 
@@ -82,6 +84,13 @@ def upgrade():
     sa.ForeignKeyConstraint(['product_id'], ['products.id'])
     )
 
+    op.create_table('categories',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=100), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
+    )
+
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
@@ -89,6 +98,7 @@ def upgrade():
         op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE cart_items SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE images SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###qqqqqqqqq
 
 
@@ -100,4 +110,5 @@ def downgrade():
     op.drop_table('products')
     op.drop_table('cart_items')
     op.drop_table('images')
+    op.drop_table('categories')
     # ### end Alembic commands ###
