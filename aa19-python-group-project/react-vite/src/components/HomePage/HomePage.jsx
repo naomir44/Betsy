@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
   return (
     <div className="homepage">
-      {/* Hero Section */}
+
       <div className="hero-section">
-        <h1>Welcome to Etsy Clone</h1>
+        <h1>Welcome to Betsy</h1>
         <p>Your one-stop shop for unique and creative goods.</p>
         <input type="text" placeholder="Search for items" className="search-bar" />
       </div>
