@@ -4,6 +4,8 @@ import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import HomePage from '../components/HomePage/HomePage';
 import ProductDetails from '../components/ProductDetails';
+import CategoryPage from '../components/CategoryPage/CategoryPage';
+import ProductReviews from '../components/ProductReviews/ProductReviews';
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +16,10 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
+        path: '/category/:categoryId',
+        element: <CategoryPage/>
+      },
+      {
         path: "login",
         element: <LoginFormPage />,
       },
@@ -22,8 +28,12 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
-        path: "products/:productId",
+        path: "product/:productId",
         element: <ProductDetails />
+      },
+      {
+        path: 'reviews/products/:productId',
+        element: <ProductReviews />
       }
     ],
   },

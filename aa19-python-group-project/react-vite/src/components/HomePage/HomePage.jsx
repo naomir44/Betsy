@@ -1,25 +1,29 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchProducts } from "../../redux/products"
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchCategories } from '../../redux/categories';
+import './HomePage.css';
 
 const HomePage = () => {
-  const dispatch = useDispatch()
-  const products = useSelector((state) => Object.values(state.products))
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => Object.values(state.categories));
 
   useEffect(() => {
-      dispatch(fetchProducts())
-  }, [dispatch])
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
-return (
-  <>
-  <h1>Products</h1>
-  {products.map(product => (
-    <div key={product.name}>
-      {product.name}
+  return (
+    <div className="homepage">
+      <h1>Categories</h1>
+      <div className="categories">
+        {categories.map(category => (
+          <Link to={`/category/${category.id}`} key={category.id} className="category-card">
+            <h2>{category.name}</h2>
+          </Link>
+        ))}
+      </div>
     </div>
-  ))}
-  </>
-)
-}
+  );
+};
 
 export default HomePage;
