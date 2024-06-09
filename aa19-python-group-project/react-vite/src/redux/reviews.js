@@ -32,7 +32,7 @@ const deleteReview = (reviewId) => {
 };
 
 export const fetchReviews = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}/reviews`);
+    const res = await fetch(`/api/reviews/products/${productId}`);
 
     if (res.ok) {
         const reviews = await res.json();
@@ -42,7 +42,7 @@ export const fetchReviews = (productId) => async (dispatch) => {
 };
 
 export const createReview = (productId, reviewData) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}/reviews`, {
+    const res = await fetch(`/api/reviews/products/${productId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
