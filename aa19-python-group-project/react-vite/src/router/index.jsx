@@ -6,6 +6,7 @@ import HomePage from '../components/HomePage/HomePage';
 import ProductDetails from '../components/ProductDetails';
 import CategoryPage from '../components/CategoryPage/CategoryPage';
 import ProductReviews from '../components/ProductReviews/ProductReviews';
+import CartItems from '../components/CartItems/CartItems';
 
 export const router = createBrowserRouter([
   {
@@ -32,8 +33,12 @@ export const router = createBrowserRouter([
         element: <ProductDetails />
       },
       {
-        path: 'reviews/products/:productId',
+        path: "reviews/products/:productId",
         element: <ProductReviews />
+      },
+      {
+        path: "cart",
+        element: <CartItems />
       }
     ],
   },
