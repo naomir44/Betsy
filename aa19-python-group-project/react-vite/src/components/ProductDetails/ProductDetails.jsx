@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchProductDetails } from '../../redux/products'; // Ensure this thunk is available
-import ProductReviews from '../ProductReviews/ProductReviews'; // Import the ProductReviews component
+import { fetchProductDetails } from '../../redux/products';
+import ProductReviews from '../ProductReviews/ProductReviews';
 import './ProductDetails.css';
 
 const ProductDetails = () => {

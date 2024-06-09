@@ -8,7 +8,7 @@ const ProductReviews = () => {
   let { productId } = useParams();
   productId = +productId
   const dispatch = useDispatch();
-  const reviews = useSelector(state => Object.values(state.reviews).filter(review => review.productId === +productId));
+  const reviews = useSelector(state => Object.values(state.reviews).filter(review => review.product_id === +productId));
 
   useEffect(() => {
     if (productId) {
