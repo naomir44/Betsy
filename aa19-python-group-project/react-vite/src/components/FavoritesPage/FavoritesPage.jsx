@@ -21,7 +21,7 @@ const FavoritesPage = () => {
 
   return (
     <div>
-      <h1>Your Favorite Products</h1>
+     <button>Favorites</button>
       <ul>
         {favorites.map(product => (
           <li key={product.id}>
