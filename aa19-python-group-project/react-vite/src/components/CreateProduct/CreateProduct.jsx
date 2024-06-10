@@ -37,9 +37,12 @@ const CreateProduct = () => {
                 category_id: categories.indexOf(category) + 1
             }
             const newProduct = await dispatch(fetchCreateProduct(payload))
-            console.log(newProduct)
+
             const newProductId = newProduct.id
-            // const newImage =
+            await dispatch(fetchCreateProduct({
+                url: url,
+                product_id: newProductId
+            }))
             if (newProduct) {
                 navigate(`/products/${+newProductId}`)
             }
