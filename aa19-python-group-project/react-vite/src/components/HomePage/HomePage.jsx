@@ -14,7 +14,8 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      <h1>Categories</h1>
+      <h1 className='homepage-message'>Shop our selections</h1>
+      <h2 className='homepage-message-2'>Curated collections hand-picked by Etsy editors</h2>
       <div className="categories">
         {categories.map(category => (
           <Link to={`/category/${category.id}`} key={category.id} className="category-card">
