@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { FaUserCircle } from 'react-icons/fa';
+import { PiUserCirclePlusDuotone } from "react-icons/pi";
 import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import './Navigation.css'
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -41,18 +42,18 @@ function ProfileButton() {
 
   return (
     <>
-      <button onClick={toggleMenu}>
-        <FaUserCircle />
+     <button className="fa-circle" onClick={toggleMenu}>
+     <PiUserCirclePlusDuotone className="profile-icon"/>
       </button>
       {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
+        <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
+              <div>{user.username}</div>
+              <div>{user.email}</div>
+              <div>
                 <button onClick={logout}>Log Out</button>
-              </li>
+              </div>
             </>
           ) : (
             <>
@@ -68,7 +69,7 @@ function ProfileButton() {
               />
             </>
           )}
-        </ul>
+        </div>
       )}
     </>
   );
