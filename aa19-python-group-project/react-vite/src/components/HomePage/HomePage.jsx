@@ -7,7 +7,7 @@ import './HomePage.css';
 const HomePage = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => Object.values(state.categories));
-
+  console.log(categories)
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
@@ -18,6 +18,7 @@ const HomePage = () => {
       <div className="categories">
         {categories.map(category => (
           <Link to={`/category/${category.id}`} key={category.id} className="category-card">
+            <img src={category.imageUrl} alt={category.name}></img>
             <h2>{category.name}</h2>
           </Link>
         ))}

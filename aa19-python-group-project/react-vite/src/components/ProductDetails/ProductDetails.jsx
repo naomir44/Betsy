@@ -23,7 +23,9 @@ const ProductDetails = () => {
   return (
     <div className="product-detail-page">
       <h1>{product.name}</h1>
-      <img src={product.imageUrl} alt={product.name} className="product-image" />
+      {product.images.map(image => (
+        <img key={image.url} src={image.url} alt={product.name} className='product-image'></img>
+      ))}
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
       <ProductReviews />

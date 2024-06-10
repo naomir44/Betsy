@@ -8,6 +8,7 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
+    imageUrl = db.Column(db.String, nullable=False)
 
     products = db.relationship('Product', back_populates='category')
 
@@ -15,5 +16,6 @@ class Category(db.Model):
         return{
             'id': self.id,
             'name': self.name,
+            'imageUrl': self.imageUrl,
             'products': [product.to_dict() for product in self.products]
         }

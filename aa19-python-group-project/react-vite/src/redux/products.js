@@ -1,8 +1,7 @@
 
-
-
 const GET_ALL_PRODUCTS = '/products/GET_ALL_PRODUCTS'
 const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS'
+const CREATE_PRODUCT = '/products/CREATE_PRODUCT'
 
 const getAllProducts = products => {
     return {
@@ -14,6 +13,13 @@ const getAllProducts = products => {
 const getProductDetails = product => {
     return {
         type: GET_PRODUCT_DETAILS,
+        product
+    }
+}
+
+const createProduct = product => {
+    return {
+        type: CREATE_PRODUCT,
         product
     }
 }
@@ -38,6 +44,21 @@ export const fetchProductDetails = (productId) => async (dispatch) => {
     }
 }
 
+export const fetchCreateProduct = (product) => async (dispatch) => {
+    const res = await fetch('/api/products/new', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+    })
+    if (res.ok) {
+        const newProduct = await res.json()
+        dispatch(createProduct(newProduct))
+        return newProduct
+    }
+}
+
 const initialState = {}
 const productsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -51,6 +72,13 @@ const productsReducer = (state = initialState, action) => {
                 ...state,
                 [action.product.id]: action.product
             }
+        }
+        case CREATE_PRODUCT: {
+            const newState = {
+                ...state,
+                [action.product.id]: action.product
+            }
+            return newState
         }
         default:
             return state

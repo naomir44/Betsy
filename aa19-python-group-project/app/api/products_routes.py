@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from app.models import Product, Image, db, Category
 from flask_login import current_user, login_required
 import os
+from app.forms import ProductForm
 
 products_bp = Blueprint('products', __name__)
 
@@ -26,37 +27,39 @@ def get_product(id):
 @products_bp.route('/new', methods=["POST"])
 @login_required
 def create_product():
-    data = request.form
-    file = request.files.get('image')
-    category_id = data.get('category_id')
+    # data = request.get_json()
+    # file = request.files.get('image')
 
-    if not data or not file:
-        abort(400, description='Invalid Data or No Image Uploaded')
+    # if not data or not file:
+    #     abort(400, description='Invalid Data or No Image Uploaded')
 
-    category = Category.query.get(category_id)
-    if not category:
-        abort(400, description='Category not selected')
-
-    file_path = save_file(file)
-
-    new_product = Product(
-        name=data.get('name'),
-        description=data.get('description'),
-        price=data.get('price'),
+    # file_path = save_file(file)
+    form = ProductForm()
+    if form.validate_on_submit():
+        new_product = Product(
+    #     name=data.get('name'),
+    #     description=data.get('description'),
+    #     price=data.get('price'),
+    #     user_id=current_user.id,
+    #     category_id=data.get('category_id')
+    # )
+        name=form.data['name'],
+        description=form.data['description'],
+        price=form.data['price'],
         user_id=current_user.id,
-        category_id=category_id
-    )
+        category_id=form.data['category_id']
+        )
 
     db.session.add(new_product)
     db.session.commit()
 
-    new_image = Image(
-        url=file_path,
-        product_id=new_product.id
-    )
+    # new_image = Image(
+    #     url=file_path,
+    #     product_id=new_product.id
+    # )
 
-    db.session.add(new_image)
-    db.session.commit()
+    # db.session.add(new_image)
+    # db.session.commit()
 
     return jsonify(new_product.to_dict()), 201
 
