@@ -29,6 +29,8 @@ def get_product(id):
 def create_product():
     data = request.get_json()
 
+    if not data:
+        abort(400, description="Invalid data")
 
     new_product = Product(
         name=data.get('name'),
@@ -36,10 +38,16 @@ def create_product():
         price=data.get('price'),
         user_id=current_user.id,
         category_id=data.get('category_id')
-    )
-
+        )
     db.session.add(new_product)
     db.session.commit()
+
+    new_image = Image(
+        url=data.get('url'),
+        product_id=new_product.id
+    )
+    db.session.add(new_image)
+    db.session.commit
 
 
     return jsonify(new_product.to_dict()), 201

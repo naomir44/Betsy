@@ -12,7 +12,7 @@ const CreateProduct = () => {
     const [price, setPrice] = useState(0)
     const [category, setCategory] = useState('')
     const [errors, setErrors] = useState({})
-    const [img, setImg] = useState('')
+    const [url, setUrl] = useState('')
     const user = useSelector(state => state.session.user)
     const categories = ['Art', 'Clothing', 'Jewelry', 'Home & Living', 'Toys', 'Vintage']
 
@@ -91,7 +91,15 @@ const CreateProduct = () => {
                 </select>
             </label>
             {errors.category && <p className="form-errors">{errors.category}</p>}
-
+            <label className="input-image">
+                Add an Image
+                <input
+                type="text"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder="Image URL"
+                />
+            </label>
             <button className="product-form-submit" type="submit">Create Product</button>
         </form>
     )

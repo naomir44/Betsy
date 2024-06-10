@@ -52,8 +52,10 @@ export const fetchCreateProduct = (product) => async (dispatch) => {
         },
         body: JSON.stringify(product)
     })
+    console.log(res)
     if (res.ok) {
         const newProduct = await res.json()
+        console.log(newProduct)
         dispatch(createProduct(newProduct))
         return newProduct
     }else {

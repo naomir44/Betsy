@@ -8,5 +8,7 @@ class ProductForm(FlaskForm):
   name = StringField('Name', validators=[DataRequired()])
   description = TextAreaField('Description', validators=[DataRequired()])
   price = IntegerField('Price', validators=[DataRequired()])
-  product_image = FileField('Image', validators=[FileRequired(), FileAllowed(['jpg', 'png'])])
+  user_id = IntegerField('user_id')
+  catergory_id = IntegerField('category_id')
+  # product_image = FileField('Image', validators=[FileRequired(), FileAllowed(['jpg', 'png'])])
   submit = SubmitField('Submit')
