@@ -10,11 +10,17 @@ const CartItems = () => {
         dispatch(fetchCartItems())
     }, [dispatch])
 
+    if (!cartItems) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <>
         <h1>Cart Items</h1>
         {cartItems.map(item => (
-            <h2>{item.name}</h2>
+            <h2 key={item.products.name}>
+                {item.products.name}
+            </h2>
         ))}
         </>
     )
