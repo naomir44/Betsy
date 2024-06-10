@@ -3,23 +3,23 @@ from sqlalchemy.sql import text
 
 def seed_images():
     image1 = Image(
-        url='https://your-bucket-name.s3.amazonaws.com/images/handmade_wooden_bowl.jpg',
+        url='https://samsclub13.s3.us-west-2.amazonaws.com/wooden-bowl.jpeg',
         product_id=1
     )
     image2 = Image(
-        url='https://your-bucket-name.s3.amazonaws.com/images/custom_leather_wallet.jpg',
+        url='https://samsclub13.s3.us-west-2.amazonaws.com/leather-wallet.jpeg',
         product_id=2
     )
     image3 = Image(
-        url='https://your-bucket-name.s3.amazonaws.com/images/ceramic_vase.jpg',
+        url='https://samsclub13.s3.us-west-2.amazonaws.com/ceramic-vase.jpeg',
         product_id=3
     )
     image4 = Image(
-        url='https://your-bucket-name.s3.amazonaws.com/images/knitted_scarf.jpg',
+        url='https://samsclub13.s3.us-west-2.amazonaws.com/knitted-scarf.jpeg',
         product_id=4
     )
     image5 = Image(
-        url='https://your-bucket-name.s3.amazonaws.com/images/soy_wax_candle.jpg',
+        url='https://samsclub13.s3.us-west-2.amazonaws.com/candle.jpeg',
         product_id=5
     )
 

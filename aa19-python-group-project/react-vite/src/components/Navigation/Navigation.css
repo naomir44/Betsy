@@ -1,3 +1,13 @@
 .profile-dropdown {
   position: absolute;
 }
+
+.cart-image {
+  height: 50px;
+  width: 50px;
+}
+
+.favorite-icon {
+  height: 50px;
+  width: 50px;
+}
