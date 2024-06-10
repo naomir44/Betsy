@@ -49,7 +49,6 @@ def create_product():
     db.session.add(new_image)
     db.session.commit
 
-
     return jsonify(new_product.to_dict()), 201
 
 
