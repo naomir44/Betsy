@@ -56,7 +56,10 @@ export const fetchCreateProduct = (product) => async (dispatch) => {
         const newProduct = await res.json()
         dispatch(createProduct(newProduct))
         return newProduct
-    }
+    }else {
+        const errorData = await res.json()
+        console.error('Error creating product:', errorData)
+}
 }
 
 const initialState = {}

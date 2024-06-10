@@ -29,20 +29,14 @@ const CreateProduct = () => {
             setErrors(validationErrors)
             return
         } else {
-            // const payload = {
-            //     name: name,
-            //     description: description,
-            //     price: price,
-            //     user_id: user.id,
-            //     category_id: categories.indexOf(category) + 1
-            // }
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('description', description);
-            formData.append('price', price);
-            formData.append('category_id', categories.indexOf(category) + 1);
-            formData.append('user_id', user.id);
-            const newProduct = await dispatch(fetchCreateProduct(formData))
+            const payload = {
+                name: name,
+                description: description,
+                price: price,
+                user_id: user.id,
+                category_id: categories.indexOf(category) + 1
+            }
+            const newProduct = await dispatch(fetchCreateProduct(payload))
             console.log(newProduct)
             const newProductId = newProduct.id
             // const newImage =
