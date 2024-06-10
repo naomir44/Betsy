@@ -9,6 +9,7 @@ import sessionReducer from "./session";
 import productsReducer from "./products";
 import categoriesReducer from "./categories";
 import reviewsReducer from "./reviews";
+import favoritesReducer from "./favorites";
 import cartReducer from "./cart-items";
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   products: productsReducer,
   categories: categoriesReducer,
   reviews: reviewsReducer,
+  favorites: favoritesReducer,
   cartItems: cartReducer
 });
 
