@@ -61,7 +61,7 @@ def create_image():
 @products_bp.route('/<int:id>/edit', methods=['PUT'])
 @login_required
 def update_product(id):
-    data = request.form
+    data = request.json
     product = Product.query.get_or_404(id)
 
     if product.user_id != current_user.id:

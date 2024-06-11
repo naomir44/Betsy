@@ -4,6 +4,7 @@ const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS'
 const CREATE_PRODUCT = '/products/CREATE_PRODUCT'
 const ADD_IMAGE = '/product/ADD_IMAGE'
 const UPDATE_PRODUCT = '/product/UPDATE_PRODUCT'
+const DELETE_PRODUCT = '/product/DELETE_PRODUCT'
 
 const getAllProducts = products => {
     return {
@@ -37,6 +38,13 @@ const updateProduct = product => {
     return {
         type: UPDATE_PRODUCT,
         product
+    }
+}
+
+const deleteProduct = productId => {
+    return {
+        type: DELETE_PRODUCT,
+        productId
     }
 }
 
@@ -101,12 +109,26 @@ export const fetchAddImage = (image) => async (dispatch) => {
 export const fetchUpdateProduct = (product, productId) => async (dispatch) => {
     const res = await fetch(`/api/products/${productId}/edit`, {
         method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(product)
     })
     if (res.ok) {
         const updatedProduct = await res.json()
+        console.log(updatedProduct)
         dispatch(updateProduct(updatedProduct))
         return updatedProduct
+    }
+}
+
+export const fetchDeleteProduct = (productId) => async (dispatch) => {
+    const res = await fetch(`/api/products/${productId}/delete`, {
+        method: 'DELETE'
+    })
+    if (res.ok) {
+        dispatch(deleteProduct(productId))
+        return
     }
 }
 
@@ -143,6 +165,17 @@ const productsReducer = (state = initialState, action) => {
                 }
             }
             return newState
+        }
+        case UPDATE_PRODUCT: {
+            return {
+                ...state,
+                [action.product.id]: {...state[action.product]}
+            }
+        }
+        case DELETE_PRODUCT: {
+            const newState = { ...state };
+            delete newState[action.productId];
+            return newState;
         }
         default:
             return state

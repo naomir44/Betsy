@@ -11,7 +11,7 @@ const UpdateProduct = () => {
     productId = +productId
     const product = useSelector(state => state.products[productId])
     const [name, setName] = useState(product.name)
-    const [description, setDescription] = useState(product.name)
+    const [description, setDescription] = useState(product.description)
     const [price, setPrice] = useState(product.price)
     const [category, setCategory] = useState(product.category)
     const [errors, setErrors] = useState({})
@@ -40,12 +40,13 @@ const UpdateProduct = () => {
                 category_id: categories.indexOf(category) + 1
             }
             const updatedProduct = await dispatch(fetchUpdateProduct(payload, productId))
+            console.log(updatedProduct)
 
-            await dispatch(fetchAddImage({
-                url: url,
-                product_id: productId
-            }))
             if (updatedProduct) {
+                await dispatch(fetchAddImage({
+                    url: url,
+                    product_id: productId
+                }))
                 navigate(`/products/${productId}`)
             }
         }
