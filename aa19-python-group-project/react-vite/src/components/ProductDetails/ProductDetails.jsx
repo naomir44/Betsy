@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { fetchProductDetails } from '../../redux/products';
 import ProductReviews from '../ProductReviews/ProductReviews';
 import './ProductDetails.css';
+import OpenModalButton from '../OpenModalButton';
+import ReviewForm from '../ReviewForm';
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -28,6 +30,10 @@ const ProductDetails = () => {
       ))}
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
+      <OpenModalButton
+        modalComponent={<ReviewForm productId={productId} />}
+        buttonText="Leave a Review"
+      />
       <ProductReviews />
     </div>
   );

@@ -1,5 +1,5 @@
 import { useModal } from '../../context/Modal';
-import './Navigation.css'
+// import './Navigation.css'
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal
