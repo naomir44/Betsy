@@ -10,6 +10,7 @@ import FavoritesPage from '../components/FavoritesPage/FavoritesPage';
 import CartItems from '../components/CartItems/CartItems';
 import CreateProduct from '../components/CreateProduct';
 import UserProducts from '../components/UserProducts';
+import UpdateProduct from '../components/CreateProduct/UpdateProduct';
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "user/products",
         element: <UserProducts />
+      },
+      {
+        path: "products/:productId/edit",
+        element: <UpdateProduct />
       }
     ],
   },

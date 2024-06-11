@@ -1,18 +1,34 @@
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { NavLink, useNavigate } from "react-router-dom"
+import { fetchProducts } from "../../redux/products"
 
 
 const UserProducts = () => {
     const user = useSelector(state => state.session.user)
-    const products = useSelector(state => Object.values(state.products))
-    console.log(products)
+    const products = useSelector(state => Object.values(state.products).filter(product => product.user_id === user.id))
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    useEffect(() => {
+        dispatch(fetchProducts())
+    }, [dispatch])
+
+    // const updateClick = () => {
+    //     navigate(navigate(`/products/${product.id}/edit`))
+    // }
+
     return (
         <>
         {products.map(product => (
-            <Link to={`/products/${product.id}`} key={product.id} className="product-card">
-                <img src={product.imageUrl} alt={product.name}></img>
+            <div key={product.name} className="product-card">
+            <NavLink to={`/products/${product.id}`} key={product.id}>
+                <img src={product.images[0]?.url} alt={product.name}></img>
                 <h2>{product.name}</h2>
-            </Link>
+            </NavLink>
+            <NavLink to={`/products/${product.id}/edit`}>
+            <button>Update Product</button>
+            </NavLink>
+            </div>
         ))}
         </>
     )

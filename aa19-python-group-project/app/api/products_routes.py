@@ -62,7 +62,6 @@ def create_image():
 @login_required
 def update_product(id):
     data = request.form
-    file = request.files.get('image')
     product = Product.query.get_or_404(id)
 
     if product.user_id != current_user.id:
@@ -75,14 +74,6 @@ def update_product(id):
     product.description = data.get('description', product.description)
     product.price = data.get('price', product.price)
     product.category_id = data.get('category_id', product.category_id)
-
-    if file:
-        file_path = save_file(file)
-        new_image = Image(
-            url=file_path,
-            product_id=product.id
-        )
-        db.session.add(new_image)
 
     db.session.commit()
     return jsonify(product.to_dict())
