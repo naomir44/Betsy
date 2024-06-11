@@ -42,13 +42,21 @@ function ProfileButton() {
     e.preventDefault();
     dispatch(thunkLogout());
     closeMenu();
+    navigate('/')
   };
 
-  const onClick = (e) => {
+  const newProduct = (e) => {
     e.preventDefault();
     closeMenu();
     closeModal();
     navigate('/products/new');
+  }
+
+  const myProducts = (e) => {
+    e.preventDefault()
+    closeMenu();
+    closeModal();
+    navigate('/user/products');
   }
 
   return (
@@ -63,9 +71,10 @@ function ProfileButton() {
               <div>{user.username}</div>
               <div>{user.email}</div>
               <div>
-              {/* <NavLink to={`/products/new`}> */}
-                <button className='create-product-button' onClick={onClick}>Create a New Product</button>
-              {/* </NavLink> */}
+                <button className='create-product-button' onClick={newProduct}>Create a New Product</button>
+              </div>
+              <div>
+                <button className="edit-product-button" onClick={myProducts}>My Products</button>
               </div>
               <div>
                 <button onClick={logout}>Log Out</button>

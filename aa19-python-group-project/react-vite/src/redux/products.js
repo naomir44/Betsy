@@ -3,6 +3,7 @@ const GET_ALL_PRODUCTS = '/products/GET_ALL_PRODUCTS'
 const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS'
 const CREATE_PRODUCT = '/products/CREATE_PRODUCT'
 const ADD_IMAGE = '/product/ADD_IMAGE'
+const UPDATE_PRODUCT = '/product/UPDATE_PRODUCT'
 
 const getAllProducts = products => {
     return {
@@ -29,6 +30,13 @@ const addImage = image => {
     return {
         type: ADD_IMAGE,
         image
+    }
+}
+
+const updateProduct = product => {
+    return {
+        type: UPDATE_PRODUCT,
+        product
     }
 }
 
@@ -87,6 +95,18 @@ export const fetchAddImage = (image) => async (dispatch) => {
     } else {
         const errorData = await res.json()
         console.error('Error creating image:', errorData)
+    }
+}
+
+export const fetchUpdateProduct = (product, productId) => async (dispatch) => {
+    const res = await fetch(`/api/products/${productId}/edit`, {
+        method: 'PUT',
+        body: JSON.stringify(product)
+    })
+    if (res.ok) {
+        const updatedProduct = await res.json()
+        dispatch(updateProduct(updatedProduct))
+        return updatedProduct
     }
 }
 
