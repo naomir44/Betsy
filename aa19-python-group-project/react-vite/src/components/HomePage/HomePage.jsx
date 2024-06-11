@@ -7,6 +7,7 @@ import './HomePage.css';
 const HomePage = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => Object.values(state.categories));
+  const user = useSelector((state)=> state.session.user)
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -14,6 +15,7 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
+     <div className='greeting'><h1>Welcome back, {user.username}!</h1></div>
       <h1 className='homepage-message'>Shop our selections</h1>
       <h2 className='homepage-message-2'>Curated collections hand-picked by Betsy editors</h2>
       <div className="categories">

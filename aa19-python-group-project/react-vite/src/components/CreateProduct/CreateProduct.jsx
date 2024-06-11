@@ -1,33 +1,33 @@
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { fetchAddImage, fetchCreateProduct } from "../../redux/products"
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchAddImage, fetchCreateProduct } from "../../redux/products";
+import './CreateProduct.css'
 
 const CreateProduct = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState(0)
-    const [category, setCategory] = useState('')
-    const [errors, setErrors] = useState({})
-    const [url, setUrl] = useState('')
-    const user = useSelector(state => state.session.user)
-    const categories = ['Art', 'Clothing', 'Jewelry', 'Home & Living', 'Toys', 'Vintage']
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState(0);
+    const [category, setCategory] = useState('');
+    const [errors, setErrors] = useState({});
+    const [url, setUrl] = useState('');
+    const user = useSelector(state => state.session.user);
+    const categories = ['Art', 'Clothing', 'Jewelry', 'Home & Living', 'Toys', 'Vintage'];
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        const validationErrors = {}
+        e.preventDefault();
+        const validationErrors = {};
 
-        if (name.length === 0) validationErrors.name = 'Give your product a name'
-        if (description.length === 0) validationErrors.description = 'Give your product a description'
-        if (price === 0) validationErrors.price = 'Your product needs a price'
-        if (!category) validationErrors.categories = 'Must select a category'
+        if (name.length === 0) validationErrors.name = 'Give your product a name';
+        if (description.length === 0) validationErrors.description = 'Give your product a description';
+        if (price === 0) validationErrors.price = 'Your product needs a price';
+        if (!category) validationErrors.categories = 'Must select a category';
 
         if (Object.values(validationErrors).length > 0) {
-            setErrors(validationErrors)
-            return
+            setErrors(validationErrors);
+            return;
         } else {
             const payload = {
                 name: name,
@@ -35,19 +35,19 @@ const CreateProduct = () => {
                 price: price,
                 user_id: user.id,
                 category_id: categories.indexOf(category) + 1
-            }
-            const newProduct = await dispatch(fetchCreateProduct(payload))
+            };
+            const newProduct = await dispatch(fetchCreateProduct(payload));
 
-            const newProductId = newProduct.id
+            const newProductId = newProduct.id;
             await dispatch(fetchAddImage({
                 url: url,
                 product_id: newProductId
-            }))
+            }));
             if (newProduct) {
-                navigate(`/products/${+newProductId}`)
+                navigate(`/products/${+newProductId}`);
             }
         }
-    }
+    };
 
     return (
         <form className="create-product-form" onSubmit={handleSubmit}>
@@ -74,10 +74,10 @@ const CreateProduct = () => {
             <label className="input-price">
                 Price
                 <input
-                    type="number"
+                    type="text"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Price"
+                    placeholder="0.00"
                 />
             </label>
             {errors.price && <p className="form-errors">{errors.price}</p>}
@@ -97,16 +97,15 @@ const CreateProduct = () => {
             <label className="input-image">
                 Add an Image
                 <input
-                type="text"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                placeholder="Image URL"
+                    type="text"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    placeholder="Image URL"
                 />
             </label>
             <button className="product-form-submit" type="submit">Create Product</button>
         </form>
-    )
-}
+    );
+};
 
-
-export default CreateProduct
+export default CreateProduct;

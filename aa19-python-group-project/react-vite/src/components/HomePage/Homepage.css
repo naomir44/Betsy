@@ -2,14 +2,21 @@
   text-align: center;
   padding: 20px;
 }
+.greeting {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  color: lightslategray;
+}
 .homepage-message {
-font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: lighter;
+font-size: 25px;
 }
 .homepage-message-2 {
   font-weight: lighter;
   color: light rgb(198, 195, 195);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
 }
 
 .categories {
@@ -42,6 +49,8 @@ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 .category-card h2 {
   margin: 10px 0;
   font-size: 1.2em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
 }
 
 .category-card:hover {
