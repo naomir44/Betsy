@@ -2,6 +2,7 @@
 const GET_ALL_PRODUCTS = '/products/GET_ALL_PRODUCTS'
 const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS'
 const CREATE_PRODUCT = '/products/CREATE_PRODUCT'
+const ADD_IMAGE = '/product/ADD_IMAGE'
 
 const getAllProducts = products => {
     return {
@@ -21,6 +22,13 @@ const createProduct = product => {
     return {
         type: CREATE_PRODUCT,
         product
+    }
+}
+
+const addImage = image => {
+    return {
+        type: ADD_IMAGE,
+        image
     }
 }
 
@@ -52,16 +60,34 @@ export const fetchCreateProduct = (product) => async (dispatch) => {
         },
         body: JSON.stringify(product)
     })
-    console.log(res)
     if (res.ok) {
         const newProduct = await res.json()
         console.log(newProduct)
         dispatch(createProduct(newProduct))
         return newProduct
-    }else {
+    } else {
         const errorData = await res.json()
         console.error('Error creating product:', errorData)
+    }
 }
+
+export const fetchAddImage = (image) => async (dispatch) => {
+    const res = await fetch('/api/products/new/image', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(image)
+    })
+    if (res.ok) {
+        const newImage = await res.json()
+        console.log(newImage)
+        dispatch(addImage(newImage))
+        return newImage
+    } else {
+        const errorData = await res.json()
+        console.error('Error creating image:', errorData)
+    }
 }
 
 const initialState = {}
@@ -82,6 +108,19 @@ const productsReducer = (state = initialState, action) => {
             const newState = {
                 ...state,
                 [action.product.id]: action.product
+            }
+            return newState
+        }
+        case ADD_IMAGE: {
+            const newState = {
+                ...state,
+                [action.image.product_id]: {
+                    ...state[action.image.product_id],
+                    images: [
+                        ...(state[action.image.product_id]?.images || []),
+                        action.image
+                    ]
+                }
             }
             return newState
         }

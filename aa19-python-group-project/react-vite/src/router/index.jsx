@@ -9,6 +9,7 @@ import ProductReviews from '../components/ProductReviews/ProductReviews';
 import FavoritesPage from '../components/FavoritesPage/FavoritesPage';
 import CartItems from '../components/CartItems/CartItems';
 import CreateProduct from '../components/CreateProduct';
+import UserProducts from '../components/UserProducts';
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: "products/new",
         element: <CreateProduct />
+      },
+      {
+        path: "user/products",
+        element: <UserProducts />
       }
     ],
   },

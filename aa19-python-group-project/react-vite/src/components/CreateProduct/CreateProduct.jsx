@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { fetchCreateProduct } from "../../redux/products"
+import { fetchAddImage, fetchCreateProduct } from "../../redux/products"
 
 
 const CreateProduct = () => {
@@ -39,7 +39,7 @@ const CreateProduct = () => {
             const newProduct = await dispatch(fetchCreateProduct(payload))
 
             const newProductId = newProduct.id
-            await dispatch(fetchCreateProduct({
+            await dispatch(fetchAddImage({
                 url: url,
                 product_id: newProductId
             }))

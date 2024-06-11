@@ -5,13 +5,17 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useNavigate } from "react-router-dom";
 import './Navigation.css'
+import { useModal } from "../../context/Modal";
 
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
+  const { closeModal } = useModal()
+  const navigate = useNavigate()
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -40,6 +44,13 @@ function ProfileButton() {
     closeMenu();
   };
 
+  const onClick = (e) => {
+    e.preventDefault();
+    closeMenu();
+    closeModal();
+    navigate('/products/new');
+  }
+
   return (
     <>
      <button className="fa-circle" onClick={toggleMenu}>
@@ -51,6 +62,11 @@ function ProfileButton() {
             <>
               <div>{user.username}</div>
               <div>{user.email}</div>
+              <div>
+              {/* <NavLink to={`/products/new`}> */}
+                <button className='create-product-button' onClick={onClick}>Create a New Product</button>
+              {/* </NavLink> */}
+              </div>
               <div>
                 <button onClick={logout}>Log Out</button>
               </div>

@@ -7,7 +7,7 @@ import './HomePage.css';
 const HomePage = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => Object.values(state.categories));
-  console.log(categories)
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);

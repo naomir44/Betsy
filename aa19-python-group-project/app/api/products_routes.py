@@ -42,15 +42,20 @@ def create_product():
     db.session.add(new_product)
     db.session.commit()
 
-    new_image = Image(
-        url=data.get('url'),
-        product_id=new_product.id
-    )
-    db.session.add(new_image)
-    db.session.commit
-
     return jsonify(new_product.to_dict()), 201
 
+@products_bp.route('/new/image', methods=["POST"])
+@login_required
+def create_image():
+    data = request.get_json()
+
+    new_image = Image(
+        url=data.get('url'),
+        product_id=data.get('product_id')
+    )
+    db.session.add(new_image)
+    db.session.commit()
+    return jsonify(new_image.to_dict()), 201
 
 
 @products_bp.route('/<int:id>/edit', methods=['PUT'])
