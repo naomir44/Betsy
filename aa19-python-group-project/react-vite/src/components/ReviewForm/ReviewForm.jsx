@@ -39,13 +39,11 @@ const ReviewForm = ({ productId, review = null }) => {
       };
 
       if (review) {
-        // Update existing review
         const updatedReview = await dispatch(editReview(review.id, payload));
         if (updatedReview) {
           navigate(`/products/${productId}`);
         }
       } else {
-        // Create new review
         const newReview = await dispatch(createReview(productId, payload));
         if (newReview) {
           navigate(`/products/${productId}`);
