@@ -28,7 +28,7 @@ console.log(favorites)
           <li key={product.id}>
             <h2>{product.name}</h2>
             <p>{product.description}</p>
-            <button onClick={() => handleRemoveFavorite(product.id)}>Remove from Favorites</button>
+            <button className='remove-fav-button' onClick={() => handleRemoveFavorite(product.id)}>Remove from Favorites</button>
           </li>
         ))}
       </ul>
