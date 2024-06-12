@@ -22,7 +22,7 @@ const CategoryPage = () => {
 
   return (
     <div className="category-page">
-      <h1>{category.name}</h1>
+      <h1 className='category-name'>{category.name}</h1>
       <div className="products">
         {category.products.map(product => (
           <Link to={`/products/${product.id}`} key={product.id} className="product-card">
