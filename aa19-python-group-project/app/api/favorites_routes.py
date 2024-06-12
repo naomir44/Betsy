@@ -9,7 +9,7 @@ favorites_bp = Blueprint('favorites', __name__)
 def get_favorites():
     user_id = current_user.id
     favorites = Favorite.query.filter_by(user_id=user_id).all()
-    products = [favorite.product.to_dict() for favorite in favorites]
+    products = [favorite.products.to_dict() for favorite in favorites]
     return jsonify(products)
 
 @favorites_bp.route('/new/<int:id>', methods=['POST'])
