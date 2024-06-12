@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFavorites, fetchRemoveFavorite } from '../../redux/favorites';
+import './FavoritesPage.css'
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ console.log(favorites)
   }
 
   return (
-    <div>
+    <div className='container'>
       <h1>Your Favorite Products</h1>
       <ul>
         {favorites.map(product => (
