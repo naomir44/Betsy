@@ -26,6 +26,7 @@ console.log(favorites)
       <ul>
         {favorites.map(product => (
           <li key={product.id}>
+            <img src={product.images[0].url}></img>
             <h2>{product.name}</h2>
             <p>{product.description}</p>
             <button onClick={() => handleRemoveFavorite(product.id)}>Remove from Favorites</button>
