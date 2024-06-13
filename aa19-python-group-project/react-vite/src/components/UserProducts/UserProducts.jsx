@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
@@ -43,4 +42,3 @@ const UserProducts = () => {
 }
 
 export default UserProducts
->>>>>>> parent of 767be53 (more and more css)
