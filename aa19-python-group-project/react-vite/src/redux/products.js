@@ -78,7 +78,6 @@ export const fetchCreateProduct = (product) => async (dispatch) => {
     })
     if (res.ok) {
         const newProduct = await res.json()
-        console.log(newProduct)
         dispatch(createProduct(newProduct))
         return newProduct
     } else {
@@ -97,7 +96,6 @@ export const fetchAddImage = (image) => async (dispatch) => {
     })
     if (res.ok) {
         const newImage = await res.json()
-        console.log(newImage)
         dispatch(addImage(newImage))
         return newImage
     } else {
@@ -116,7 +114,6 @@ export const fetchUpdateProduct = (product, productId) => async (dispatch) => {
     })
     if (res.ok) {
         const updatedProduct = await res.json()
-        console.log(updatedProduct)
         dispatch(updateProduct(updatedProduct))
         return updatedProduct
     }

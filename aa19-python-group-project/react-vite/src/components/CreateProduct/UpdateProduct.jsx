@@ -40,7 +40,6 @@ const UpdateProduct = () => {
                 category_id: categories.indexOf(category) + 1
             }
             const updatedProduct = await dispatch(fetchUpdateProduct(payload, productId))
-            console.log(updatedProduct)
 
             if (updatedProduct) {
                 await dispatch(fetchAddImage({
