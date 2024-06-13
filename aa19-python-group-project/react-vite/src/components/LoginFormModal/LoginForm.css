@@ -60,7 +60,7 @@ input[type=text], input[type=password], input[type=email] {
 
 .loginbtn {
   width: 100%;
-  background-color: orange;
+  background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -70,7 +70,7 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .loginbtn:hover {
-  background-color: darkorange;
+  background-color: #45a049;
 }
 
 .error {

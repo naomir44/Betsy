@@ -37,7 +37,7 @@
   padding: 12px 25px;
   font-size: 18px;
   color: #fff;
-  background-color: orange;
+  background-color: #007bff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -45,5 +45,5 @@
 }
 
 .product-form-submit:hover {
-  background-color: darkorange;
+  background-color: #0056b3;
 }

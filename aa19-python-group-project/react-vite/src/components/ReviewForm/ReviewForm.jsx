@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createReview, editReview } from "../../redux/reviews";
 import { useModal } from "../../context/Modal";
-import './ReviewForm.css'
 
 const ReviewForm = ({ productId, review = null }) => {
   const dispatch = useDispatch();

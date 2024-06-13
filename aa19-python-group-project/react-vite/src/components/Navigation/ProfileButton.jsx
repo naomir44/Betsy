@@ -65,11 +65,11 @@ function ProfileButton() {
      <PiUserCirclePlusDuotone className="profile-icon"/>
       </button>
       {showMenu && (
-        <div className="profile-dropdown" ref={ulRef}>
+        <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <div className="hello-username">Hello, {user.username}!</div>
-              <div className="hello-email">{user.email}</div>
+              <div>{user.username}</div>
+              <div>{user.email}</div>
               <div>
                 <button className='create-product-button' onClick={newProduct}>Create a New Product</button>
               </div>
