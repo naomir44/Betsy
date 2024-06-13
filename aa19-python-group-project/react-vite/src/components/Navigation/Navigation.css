@@ -1,0 +1,103 @@
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding-right: 20px;
+}
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.profile-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 275px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.profile-dropdown div {
+  margin-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.profile-dropdown div:last-child {
+  margin-bottom: 0;
+}
+
+.profile-dropdown button {
+  width: 100%;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.profile-dropdown button:hover {
+  background-color: #3b3e41;
+}
+
+.cart-image {
+  height: 25px;
+  width: 25px;
+  text-decoration: none;
+  color: black;
+  transition: background-color 0.3s, padding 0.3s, margin 0.3s;
+  cursor: pointer;
+}
+.cart-image:hover {
+  background-color: lightblue;
+  border-radius: 50%;
+  padding: 15px;
+  margin: -10px;
+}
+
+.heart-icon {
+  height: 25px;
+  width: 25px;
+  text-decoration: none;
+  color: black;
+  transition: background-color 0.3s, padding 0.3s, margin 0.3s;
+  cursor: pointer;
+}
+.heart-icon:hover{
+  background-color: lightblue;
+  border-radius: 50%;
+  padding: 15px;
+  margin: -10px;
+}
+.fa-circle {
+  border: none;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background-color 0.3s, padding 0.3s, margin 0.3s;
+  cursor: pointer;
+}
+.profile-icon {
+  height: 25px;
+  width: 25px;
+  text-decoration: none;
+}
+.fa-circle:hover {
+  background-color: lightblue;
+  border-radius: 50%;
+  padding: 15px;
+  margin: -10px;
+}
+.betsy-home {
+  font-size: 40px;
+  color: rgb(255, 153, 0);
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+}
