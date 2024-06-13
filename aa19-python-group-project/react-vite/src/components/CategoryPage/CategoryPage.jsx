@@ -28,6 +28,7 @@ const CategoryPage = () => {
           <Link to={`/products/${product.id}`} key={product.id} className="product-card">
             {product.images.map(image => <img key={image.url} src={image.url}></img>)}
             <h2>{product.name}</h2>
+            <div>${product.price}</div>
           </Link>
         ))}
       </div>

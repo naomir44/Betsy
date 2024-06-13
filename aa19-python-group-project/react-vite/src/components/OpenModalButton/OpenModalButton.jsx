@@ -1,5 +1,4 @@
 import { useModal } from '../../context/Modal';
-// import './Navigation.css'
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal
@@ -15,7 +14,7 @@ function OpenModalButton({
     if (typeof onButtonClick === "function") onButtonClick();
   };
 
-  return <button className='login-signup' onClick={onClick}>{buttonText}</button>;
+  return <button className='update-review' onClick={onClick}>{buttonText}</button>;
 }
 
 export default OpenModalButton;

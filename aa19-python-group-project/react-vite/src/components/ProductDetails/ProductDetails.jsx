@@ -24,12 +24,12 @@ const ProductDetails = () => {
 
   return (
     <div className="product-detail-page">
-      <h1>{product.name}</h1>
+      <h1 className="product-deets-name">{product.name}</h1>
       {product.images.map(image => (
-        <img key={image.url} src={image.url} alt={product.name} className='product-image'></img>
+        <img key={image.url} src={image.url} alt={product.name} className="product-image" />
       ))}
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
+      <p className="product-deets-description">{product.description}</p>
+      <p className="product-deets-price">Price: ${product.price}</p>
       <OpenModalButton
         modalComponent={<ReviewForm productId={productId} />}
         buttonText="Leave a Review"
