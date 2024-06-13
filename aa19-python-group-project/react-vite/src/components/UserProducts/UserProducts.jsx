@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { fetchProducts } from "../../redux/products"
 import DeleteProduct from "../DeleteProduct"
 import OpenModalButton from "../OpenModalButton"
@@ -10,14 +10,10 @@ const UserProducts = () => {
     const user = useSelector(state => state.session.user)
     const products = useSelector(state => Object.values(state.products).filter(product => product.user_id === user.id))
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
-
-    // const updateClick = () => {
-    //     navigate(navigate(`/products/${product.id}/edit`))
-    // }
 
     return (
         <>
