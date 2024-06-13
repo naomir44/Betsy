@@ -21,15 +21,17 @@ console.log(favorites)
   }
 
   return (
-    <div className='container'>
-      <h1>Your Favorite Products</h1>
-      <ul>
+    <div className='fav-container'>
+      <h1 className='fav-title'>Your Favorite Products</h1>
+      <ul className='fav-list'>
         {favorites.map(product => (
-          <li key={product.id}>
-            <img src={product.images[0].url}></img>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
-            <button className='remove-fav-button' onClick={() => handleRemoveFavorite(product.id)}>Remove from Favorites</button>
+          <li className='fav-item' key={product.id}>
+            <img className='fav-image' src={product.images[0].url} alt={product.name} />
+            <h2 className='fav-name'>{product.name}</h2>
+            <p className='fav-description'>{product.description}</p>
+            <button className='remove-fav-button' onClick={() => handleRemoveFavorite(product.id)}>
+              Remove from Favorites
+            </button>
           </li>
         ))}
       </ul>

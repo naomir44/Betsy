@@ -24,7 +24,7 @@ const ProductReviews = () => {
   };
 
   return (
-    <div className="product-reviews">
+    <div className="product-reviews-deets-page">
       <h2>Reviews</h2>
       {reviews.length ? (
         reviews.map(review => (
@@ -37,7 +37,7 @@ const ProductReviews = () => {
                   modalComponent={<ReviewForm review={review} productId={review.product_id} />}
                   buttonText="Update"
                 />
-                <button onClick={() => handleDelete(review.id)}>Delete</button>
+                <button className='delete-review' onClick={() => handleDelete(review.id)}>Delete</button>
               </div>
             )}
           </div>
