@@ -11,10 +11,6 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector(state => state.products[productId]);
-<<<<<<< HEAD
-=======
-
->>>>>>> dcebc3910ba4c553ec6d2d5526ef5f8b12d68203
   useEffect(() => {
     if (productId) {
       dispatch(fetchProductDetails(productId));
