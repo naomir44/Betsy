@@ -21,14 +21,14 @@ const FavoritesPage = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='fav-container'>
       <h1>Your Favorite Products</h1>
       <ul>
         {favorites.map(product => (
           <li key={product.id}>
-            <img src={product.images[0].url}></img>
-            <h2>{product.name}</h2>
-            <p>{product.description}</p>
+            <img className='fav-image' src={product.images[0].url}></img>
+            <h2 className='fav-name'>{product.name}</h2>
+            <p className='fav-description'>{product.description}</p>
             <button className='remove-fav-button' onClick={() => handleRemoveFavorite(product.id)}>Remove from Favorites</button>
           </li>
         ))}
