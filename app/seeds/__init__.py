@@ -13,7 +13,6 @@ from app.models.db import db, environment, SCHEMA
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
 
-
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
@@ -29,24 +28,24 @@ def seed():
         undo_products()
         undo_reviews()
         undo_categories()
+    seed_categories()
     seed_users()
+    seed_products()
+    seed_images()
+    seed_reviews()
     seed_cart_items()
     seed_favorites()
-    seed_images()
-    seed_products()
-    seed_reviews()
-    seed_categories()
     # Add other seed functions here
-
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
-    undo_users()
-    undo_cart_items()
+    # Undo in the reverse order
     undo_favorites()
+    undo_cart_items()
+    undo_reviews()
     undo_images()
     undo_products()
-    undo_reviews()
+    undo_users()
     undo_categories()
     # Add other undo functions here
