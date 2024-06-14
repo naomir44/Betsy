@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import { fetchProducts } from "../../redux/products"
 import DeleteProduct from "../DeleteProduct"
 import OpenModalButton from "../OpenModalButton"
-
+import './UserProducts.css'
 
 const UserProducts = () => {
     const user = useSelector(state => state.session.user)
@@ -21,24 +21,24 @@ const UserProducts = () => {
     // }
 
     return (
-        <>
-        {products.map(product => (
-            <div key={product.name} className="product-card">
-            <NavLink to={`/products/${product.id}`} key={product.id}>
-                <img src={product.images[0]?.url} alt={product.name}></img>
-                <h2>{product.name}</h2>
-            </NavLink>
-            <NavLink to={`/products/${product.id}/edit`}>
-            <button>Update Product</button>
-            </NavLink>
-            <OpenModalButton
-            modalComponent={<DeleteProduct productId={product.id}/>}
-            buttonText='Delete'
-            />
+        <div className="user-product-container">
+          {products.map(product => (
+            <div key={product.id} className="user-product-card">
+                 <h2 className="user-product-name">{product.name}</h2>
+              <NavLink to={`/products/${product.id}`}>
+                <img className="user-product-image" src={product.images[0]?.url} alt={product.name}></img>
+              </NavLink>
+              <NavLink to={`/products/${product.id}/edit`}>
+                <button className="update-product-user">Update Product</button>
+              </NavLink>
+              <OpenModalButton
+                modalComponent={<DeleteProduct productId={product.id} />}
+                buttonText='Delete'
+              />
             </div>
-        ))}
-        </>
-    )
+          ))}
+        </div>
+      );
 }
 
 export default UserProducts

@@ -23,11 +23,12 @@ const CategoryPage = () => {
   return (
     <div className="category-page">
       <h1 className='category-name'>{category.name}</h1>
-      <div className="products">
+      <div className="cat-products">
         {category.products.map(product => (
-          <Link to={`/products/${product.id}`} key={product.id} className="product-card">
+          <Link to={`/products/${product.id}`} key={product.id} className="cat-product-card">
             {product.images.map(image => <img key={image.url} src={image.url}></img>)}
-            <h2>{product.name}</h2>
+            <h2 className='cat-product-name'>{product.name}</h2>
+            <p className="cat-product-price">${product.price.toFixed(2)}</p>
           </Link>
         ))}
       </div>
