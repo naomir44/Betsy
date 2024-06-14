@@ -1,5 +1,4 @@
-from .db import db, environment, SCHEMA
-
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Product(db.Model):
     __tablename__ = 'products'
@@ -11,8 +10,8 @@ class Product(db.Model):
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id', ondelete='CASCADE'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id'), ondelete='CASCADE'), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('categories.id'), ondelete='CASCADE'), nullable=False)
 
     category = db.relationship('Category', back_populates='products')
     users = db.relationship('User', back_populates='products')
