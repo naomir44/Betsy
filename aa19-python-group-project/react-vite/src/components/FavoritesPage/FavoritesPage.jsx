@@ -7,7 +7,7 @@ const FavoritesPage = () => {
   const dispatch = useDispatch();
   const favorites = useSelector(state => state.favorites.items);
   const [loading, setLoading] = useState(true);
-console.log(favorites)
+
   useEffect(() => {
     dispatch(fetchFavorites()).then(() => setLoading(false));
   }, [dispatch]);
