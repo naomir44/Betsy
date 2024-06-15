@@ -9,7 +9,7 @@ def get_reviews(product_id):
     reviews = Review.query.filter_by(product_id=product_id).all()
     return jsonify([review.to_dict() for review in reviews])
 
-@reviews_bp.route('/products/<int:product_id>', methods=['POST'])
+@reviews_bp.route('/products/<int:product_id>/', methods=['POST'])
 @login_required
 def add_review(product_id):
     data = request.get_json()
@@ -21,8 +21,7 @@ def add_review(product_id):
         user_id=current_user.id,
         product_id=product.id,
         content=data['content'],
-        rating=data['rating'],
-        # created_at=data['created_at']
+        rating=data['rating']
     )
     db.session.add(new_review)
     db.session.commit()
