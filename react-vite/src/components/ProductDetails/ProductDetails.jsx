@@ -6,16 +6,40 @@ import ProductReviews from '../ProductReviews/ProductReviews';
 import './ProductDetails.css';
 import OpenModalButton from '../OpenModalButton';
 import ReviewForm from '../ReviewForm';
+import { fetchAddCartItem } from '../../redux/cart-items';
 
 const ProductDetails = () => {
-  const { productId } = useParams();
+  let { productId } = useParams();
+  productId = +productId
   const dispatch = useDispatch();
   const product = useSelector(state => state.products[productId]);
+  const user = useSelector(state => state.session.user)
+
   useEffect(() => {
     if (productId) {
       dispatch(fetchProductDetails(productId));
     }
   }, [dispatch, productId]);
+
+  const addToCart = async () => {
+    if (user) {
+      const payload = {
+        user_id: user.id,
+        product_id: productId,
+        quantity: 1
+      }
+      const addedItem = await dispatch(fetchAddCartItem(payload))
+      if (addedItem) {
+        alert("Item added to your cart! Go to your cart to checkout!")
+      }
+    } else {
+      alert("Sign in to add this item to your cart")
+    }
+  }
+
+  const buyNow = () => {
+    alert("Feature Coming Soon!")
+  }
 
   if (!product) {
     return <div>Loading...</div>;
@@ -33,8 +57,8 @@ const ProductDetails = () => {
         <p className="product-detail-price">${product.price}</p>
         <p className="product-detail-description">{product.description}</p>
         <div className="product-detail-buttons">
-          <button className="product-detail-button buy-now-button">Buy it now</button>
-          <button className="product-detail-button add-to-cart-button">Add to cart</button>
+          <button onClick={buyNow} className="product-detail-button buy-now-button">Buy it now</button>
+          <button onClick={addToCart} className="product-detail-button add-to-cart-button">Add to cart</button>
           <button className="product-detail-button add-to-favorites-button">Add to Favorites</button>
         </div>
         <div className="product-detail-random">

@@ -7,12 +7,6 @@ from app.forms import ProductForm
 
 products_bp = Blueprint('products', __name__)
 
-def save_file(file):
-    filename = secure_filename(file.filename)
-    file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
-    file.save(file_path)
-    return file_path
-
 @products_bp.route('/')
 def get_products():
     products = Product.query.all()

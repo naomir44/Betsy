@@ -60,7 +60,7 @@ input[type=text], input[type=password], input[type=email] {
 
 .loginbtn {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #007bff;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -70,11 +70,26 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .loginbtn:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
 .error {
   color: red;
   font-size: 12px;
   margin: 5px 0;
+}
+
+.demo-login-button {
+  width: 100%;
+  background-color: #ee9d09;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.demo-login-button:hover {
+  background-color: #ffa909;
 }

@@ -1,9 +1,17 @@
 const GET_CART_ITEMS = '/cartItems/GET_CART_ITEMS'
+const ADD_CART_ITEM = '/cartItems/ADD_CART_ITEM'
 
 const getCartItems = (cartItems) => {
     return {
         type: GET_CART_ITEMS,
         cartItems
+    }
+}
+
+const addCartItem = (cartItem) => {
+    return {
+        type: ADD_CART_ITEM,
+        cartItem
     }
 }
 
@@ -17,6 +25,23 @@ export const fetchCartItems = () => async (dispatch) => {
     }
 }
 
+export const fetchAddCartItem = (cartItem) => async (dispatch) => {
+    const res = await fetch('/api/cart/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cartItem)
+    })
+
+    if (res.ok) {
+        const addedItem = res.json()
+        dispatch(addCartItem(addedItem))
+        dispatch(fetchCartItems())
+        return addedItem
+    }
+}
+
 const initialState = {}
 const cartReducer = (state=initialState, action) => {
     switch(action.type) {
@@ -24,6 +49,12 @@ const cartReducer = (state=initialState, action) => {
             const cartState = { ...initialState }
             action.cartItems.forEach(cartItem => (cartState[cartItem.id] = cartItem));
             return cartState
+        }
+        case ADD_CART_ITEM: {
+            return {
+                ...state,
+                [action.cartItem.id]: action.cartItem
+            }
         }
         default:
             return state
