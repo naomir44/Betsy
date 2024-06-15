@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 import { fetchFavorites, fetchRemoveFavorite } from '../../redux/favorites';
 import './FavoritesPage.css';
 import { fetchAddCartItem } from '../../redux/cart-items';
@@ -35,12 +36,15 @@ const FavoritesPage = () => {
 
   return (
     <div className='fav-container'>
-      <h1>Favorite items <span>{favorites.length} item{favorites.length !== 1 ? 's' : ''}</span></h1>
-      <ul>
+      <h1 className='fav-items-title'>Favorite items</h1>
+      <span className='fav-items-quantity'>{favorites.length} item{favorites.length !== 1 ? 's' : ''}</span>
+      <ul className='fav-list'>
         {favorites.map(product => (
           <li key={product.id} className='fav-item'>
             <div className='fav-header'>
-              <img className='fav-image' src={product.images[0].url} alt={product.name}></img>
+            <Link to={`/products/${product.id}`}>
+                <img className='fav-image' src={product.images[0].url} alt={product.name}></img>
+              </Link>
             </div>
             <div className='fav-body'>
               <h2 className='fav-name'>{product.name}</h2>
