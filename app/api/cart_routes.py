@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, abort
 from app.models import User, Product, CartItem, db
 from flask_login import current_user, login_required
-
+import logging
 cart_items_bp = Blueprint('cart_items', __name__)
 
 def clear_user_cart(user_id):
@@ -65,13 +65,8 @@ def delete_cart_item(item_id):
     db.session.commit()
     return jsonify({"message": "Item removed from cart"}), 200
 
-@cart_items_bp.route('/<int:user_id>/', methods=['DELETE'])
+@cart_items_bp.route('/purchase/<int:user_id>/', methods=['DELETE'])
 @login_required
 def purchase_cart(user_id):
-    # clear_user_cart(user_id)
-    # return jsonify({"message": "Purchase successful"}), 200
-    try:
-        clear_user_cart(user_id)
-        return jsonify({"message": "Purchase successful"}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    clear_user_cart(user_id)
+    return jsonify({"message": "Purchase successful"}), 200

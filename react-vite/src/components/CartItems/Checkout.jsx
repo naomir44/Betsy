@@ -10,8 +10,10 @@ const Checkout = () => {
     let total = 0
     cartItems.forEach(item => total += item.quantity)
 
-    const handlePurchase = () => {
-        dispatch(fetchDeleteCart(user.id))
+    const handlePurchase = async () => {
+        await dispatch(fetchPurchaseCart(user.id));
+        closeModal()
+        alert("Thank you for your purchase!")
     }
 
     return (

@@ -104,29 +104,13 @@ export const fetchEditCart = (itemId, payload) => async (dispatch) => {
 }
 
 export const fetchPurchaseCart = (userId) => async (dispatch) => {
-    // const res = await fetch(`/api/cart/${userId}/`, {
-    //     method: 'DELETE'
-    // })
-    // if (res.ok) {
-    //     const purchase = await res.json()
-    //     dispatch(purchaseCart())
-    //     return purchase
-    // }
-    try {
-        const res = await fetch(`/api/cart/${userId}/`, {
-            method: 'DELETE'
-        })
-
-        if (res.ok) {
-            const purchase = await res.json();
-            dispatch(purchaseCart(purchase))
-            return purchase
-        } else {
-            const error = await res.text();
-            console.error('Error:', error);
-        }
-    } catch (error) {
-        console.error('Fetch error:', error);
+    const res = await fetch(`/api/cart/purchase/${userId}/`, {
+        method: 'DELETE'
+    })
+    if (res.ok) {
+        const purchase = await res.json()
+        dispatch(purchaseCart())
+        return purchase
     }
 }
 
