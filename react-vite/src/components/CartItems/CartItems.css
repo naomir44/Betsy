@@ -127,3 +127,9 @@ h1 {
 .checkout-button:hover {
   background-color: #e0a800;
 }
+.empty-cart-title {
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
+  font-size: large;
+  font-weight: lighter;
+}

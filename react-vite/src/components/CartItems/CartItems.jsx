@@ -51,9 +51,9 @@ const CartItems = () => {
     if (cartItems.length === 0) {
         return (
             <div className="empty-cart">
-                <h1>Your cart is empty</h1>
-                <NavLink to={'/'}>Discover something unique to fill it up</NavLink>
-                <NavLink to={'/favorites'}><button>Your Favorites</button></NavLink>
+                <h1 className="empty-cart-title">Your cart is empty</h1>
+                <div><NavLink to={'/'}>Discover something unique to fill it up</NavLink></div>
+                <div><NavLink to={'/favorites'}>Your Favorites</NavLink></div>
             </div>
         )
     }
