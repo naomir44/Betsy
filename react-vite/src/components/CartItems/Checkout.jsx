@@ -18,7 +18,7 @@ const Checkout = () => {
 
     return (
         <>
-        <h1>Confirm your purchase of {total} items</h1>
+        <h1>Confirm your purchase of {total === 1 ? `${total} item` : `${total} items`}</h1>
         <button onClick={handlePurchase}>Purchase</button>
         <button onClick={closeModal}>Cancel</button>
         </>
