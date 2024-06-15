@@ -12,7 +12,7 @@ def get_favorites():
     products = [favorite.products.to_dict() for favorite in favorites]
     return jsonify(products)
 
-@favorites_bp.route('/new/<int:id>/', methods=['POST'])
+@favorites_bp.route('/new/<int:product_id>/', methods=['POST'])
 @login_required
 def add_favorite(product_id):
     user_id = current_user.id

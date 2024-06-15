@@ -7,6 +7,7 @@ import './ProductDetails.css';
 import OpenModalButton from '../OpenModalButton';
 import ReviewForm from '../ReviewForm';
 import { fetchAddCartItem } from '../../redux/cart-items';
+import { fetchAddFavorite } from '../../redux/favorites';
 
 const ProductDetails = () => {
   let { productId } = useParams();
@@ -35,7 +36,18 @@ const ProductDetails = () => {
     } else {
       alert("Sign in to add this item to your cart")
     }
-  }
+  };
+
+  const addToFavorites = async () => {
+    if (user) {
+      const addedFavorite = await dispatch(fetchAddFavorite(productId))
+      if (addedFavorite) {
+        alert("Item added to your favorites!")
+      }
+    } else {
+      alert("Sign in to add this item to your favorites")
+    }
+  };
 
   const buyNow = () => {
     alert("Feature Coming Soon!")
@@ -59,7 +71,7 @@ const ProductDetails = () => {
         <div className="product-detail-buttons">
           <button onClick={buyNow} className="product-detail-button buy-now-button">Buy it now</button>
           <button onClick={addToCart} className="product-detail-button add-to-cart-button">Add to cart</button>
-          <button className="product-detail-button add-to-favorites-button">Add to Favorites</button>
+          <button onClick={addToFavorites} className="product-detail-button add-to-favorites-button">Add to Favorites</button>
         </div>
         <div className="product-detail-random">
           <p>Arrives soon! Get it by <strong>Jun 18-22</strong> if you order today</p>
