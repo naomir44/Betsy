@@ -35,7 +35,7 @@ def add_cart_item():
     db.session.commit()
     return jsonify({"message": "Item added to cart"}), 201
 
-@cart_items_bp.route('/<int:item_id>', methods=['PUT'])
+@cart_items_bp.route('/<int:item_id>/', methods=['PUT'])
 @login_required
 def update_cart_item(item_id):
     data = request.get_json()
@@ -51,7 +51,7 @@ def update_cart_item(item_id):
     db.session.commit()
     return jsonify(cart_item.to_dict())
 
-@cart_items_bp.route('/<int:item_id>', methods=['DELETE'])
+@cart_items_bp.route('/<int:item_id>/', methods=['DELETE'])
 @login_required
 def delete_cart_item(item_id):
     cart_item = CartItem.query.get_or_404(item_id)

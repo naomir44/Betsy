@@ -8,7 +8,7 @@ def get_categories():
     categories = Category.query.all()
     return jsonify([category.to_dict() for category in categories])
 
-@categories_bp.route('/<int:id>')
+@categories_bp.route('/<int:id>/')
 def get_category(id):
     category = Category.query.get_or_404(id)
     return jsonify(category.to_dict())
