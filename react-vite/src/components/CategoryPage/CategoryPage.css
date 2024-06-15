@@ -34,7 +34,8 @@
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
-  width: 200px;
+  width: 250px;
+  height: 500px;
   transition: box-shadow 0.3s ease;
   text-decoration: none;
   color: inherit;
@@ -55,7 +56,12 @@
 }
 
 .cat-product-price {
-  font-size: 1rem;
+  font-size: small;
+  color: #888;
+  margin-bottom: 10px;
+}
+.cat-product-description {
+  font-size: small;
   color: #888;
   margin-bottom: 10px;
 }

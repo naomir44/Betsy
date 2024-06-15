@@ -28,6 +28,7 @@ const CategoryPage = () => {
           <Link to={`/products/${product.id}`} key={product.id} className="cat-product-card">
             {product.images.map(image => <img key={image.url} src={image.url}></img>)}
             <h2 className='cat-product-name'>{product.name}</h2>
+            <p className='cat-product-description'>{product.description}</p>
             <p className="cat-product-price">${product.price.toFixed(2)}</p>
           </Link>
         ))}

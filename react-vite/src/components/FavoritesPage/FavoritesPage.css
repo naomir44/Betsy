@@ -3,13 +3,11 @@
   margin: 0 auto;
   padding: 20px;
   text-align: center;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .fav-container h1 {
-  font-size: 2em;
+  font-size: 1.5em;
   margin-bottom: 20px;
   color: #333;
 }
@@ -17,46 +15,60 @@
 .fav-container ul {
   list-style-type: none;
   padding: 0;
-}
-
-.fav-container li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
 }
 
-.fav-container li:hover {
-  transform: scale(1.02);
+.fav-item {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fav-header {
+  position: relative;
 }
 
 .fav-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.fav-body {
+  padding: 15px;
+  text-align: left;
 }
 
 .fav-name {
-  font-size: 1.5em;
-  margin: 10px 0;
+  font-size: 1.2em;
   color: #333;
+  margin: 0;
 }
 
 .fav-description {
-  font-size: 1em;
+  font-size: 0.9em;
   color: #666;
-  margin-bottom: 20px;
-  padding: 0 20px;
+  margin: 10px 0;
 }
 
-.remove-fav-button {
+.fav-price {
+  font-size: 1.1em;
+  color: #333;
+  margin: 10px 0;
+}
+
+.fav-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fav-add-to-cart {
   padding: 10px 20px;
   background-color: #007bff;
   color: white;
@@ -64,12 +76,32 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-left: 20px;
 }
 
-.remove-fav-button:hover {
+.fav-add-to-cart:hover {
   background-color: #0056b3;
 }
 
-.remove-fav-button:focus {
+.fav-add-to-cart:focus {
+  outline: none;
+}
+
+.fav-remove {
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 20px;
+}
+
+.fav-remove:hover {
+  background-color: #c82333;
+}
+
+.fav-remove:focus {
   outline: none;
 }
