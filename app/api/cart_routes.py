@@ -4,6 +4,10 @@ from flask_login import current_user, login_required
 
 cart_items_bp = Blueprint('cart_items', __name__)
 
+def clear_user_cart(user_id):
+    CartItem.query.filter_by(user_id=user_id).delete()
+    db.session.commit()
+
 @cart_items_bp.route('/', methods=['GET'])
 @login_required
 def get_cart_items():
@@ -18,8 +22,6 @@ def add_cart_item():
     data = request.get_json()
     if not data or 'product_id' not in data or 'quantity' not in data:
         abort(400, description="Invalid data")
-
-    product = Product.query.get_or_404(data['product_id'])
 
     existing_item = CartItem.query.filter_by(user_id=current_user.id, product_id=data['product_id']).first()
     if existing_item:
@@ -62,3 +64,14 @@ def delete_cart_item(item_id):
     db.session.delete(cart_item)
     db.session.commit()
     return jsonify({"message": "Item removed from cart"}), 200
+
+@cart_items_bp.route('/<int:user_id>/', methods=['DELETE'])
+@login_required
+def purchase_cart(user_id):
+    # clear_user_cart(user_id)
+    # return jsonify({"message": "Purchase successful"}), 200
+    try:
+        clear_user_cart(user_id)
+        return jsonify({"message": "Purchase successful"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
