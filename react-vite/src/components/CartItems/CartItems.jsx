@@ -4,6 +4,7 @@ import { fetchCartItems, fetchDeleteCart, fetchEditCart, updateLocalCartItems } 
 import { NavLink } from "react-router-dom"
 import OpenModalButton from "../OpenModalButton/OpenModalButton"
 import Checkout from "./Checkout"
+import './CartItems.css'
 
 const CartItems = () => {
     const dispatch = useDispatch()
@@ -49,47 +50,50 @@ const CartItems = () => {
 
     if (cartItems.length === 0) {
         return (
-            <>
-            <h1>Your cart is empty</h1>
-            <NavLink to={'/'}>Discover something unique to fill it up</NavLink>
-            <NavLink to={'/favorites'}><button>Your Favorites</button></NavLink>
-            </>
+            <div className="empty-cart">
+                <h1>Your cart is empty</h1>
+                <NavLink to={'/'}>Discover something unique to fill it up</NavLink>
+                <NavLink to={'/favorites'}><button>Your Favorites</button></NavLink>
+            </div>
         )
     }
 
     return (
-        <>
-        <h1>Cart Items</h1>
-        {cartItems.map(item => (
-            <h2 key={item.products.name} className="cart-item-card">
-                <img className="cart-item-image" src={item.products.images[0].url}></img>
-                <div className="cart-item-name">{item.products.name}</div>
-                <div className="cart-item-quantity">
-                        {editingItemId === item.id ? (
-                            <>
-                                <input
-                                    type="number"
-                                    value={quantity}
-                                    min="1"
-                                    onChange={(e) => setQuantity(parseInt(e.target.value))}
-                                />
-                                <button onClick={() => handleSaveQuantity(item.id)}>Save</button>
-                            </>
-                        ) : (
-                            <>
-                                <span>Quantity: {item.quantity}</span>
-                                <button onClick={() => handleEditQuantity(item)}>Edit Quantity</button>
-                            </>
-                        )}
+        <div className="cart-container">
+            <h1>Cart Items</h1>
+            {cartItems.map(item => (
+                <div key={item.products.name} className="cart-item-card">
+                    <img className="cart-item-image" src={item.products.images[0].url} alt={item.products.name} />
+                    <div className="cart-item-details">
+                        <div className="cart-item-name">{item.products.name}</div>
+                        <div className="cart-item-quantity">
+                            {editingItemId === item.id ? (
+                                <>
+                                    <input
+                                        type="number"
+                                        value={quantity}
+                                        min="1"
+                                        onChange={(e) => setQuantity(parseInt(e.target.value))}
+                                    />
+                                    <button onClick={() => handleSaveQuantity(item.id)}>Save</button>
+                                </>
+                            ) : (
+                                <>
+                                    <span>Quantity: {item.quantity}</span>
+                                    <button onClick={() => handleEditQuantity(item)}>Edit Quantity</button>
+                                </>
+                            )}
+                        </div>
                     </div>
-                <button onClick={() => handleDelete(item.id)}>Remove Item</button>
-            </h2>
-        ))}
-        <OpenModalButton
-        modalComponent={<Checkout />}
-        buttonText='Checkout'
-        />
-        </>
+                    <button className="cart-item-remove" onClick={() => handleDelete(item.id)}>Remove Item</button>
+                </div>
+            ))}
+            <OpenModalButton
+                modalComponent={<Checkout />}
+                buttonText='Checkout'
+                className="checkout-button"
+            />
+        </div>
     )
 }
 

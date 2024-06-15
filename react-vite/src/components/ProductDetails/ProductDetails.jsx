@@ -7,7 +7,7 @@ import './ProductDetails.css';
 import OpenModalButton from '../OpenModalButton';
 import ReviewForm from '../ReviewForm';
 import { fetchAddCartItem } from '../../redux/cart-items';
-import { fetchAddFavorite } from '../../redux/favorites';
+import { fetchAddFavorite, fetchFavorites } from '../../redux/favorites';
 
 const ProductDetails = () => {
   let { productId } = useParams();
@@ -15,12 +15,17 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const product = useSelector(state => state.products[productId]);
   const user = useSelector(state => state.session.user)
+  const favorites = useSelector(state => Object.values(state.favorites));
 
   useEffect(() => {
     if (productId) {
       dispatch(fetchProductDetails(productId));
     }
   }, [dispatch, productId]);
+
+  useEffect(() => {
+    dispatch(fetchFavorites())
+  }, [dispatch])
 
   const addToCart = async () => {
     if (user) {
@@ -41,6 +46,9 @@ const ProductDetails = () => {
   const addToFavorites = async () => {
     if (user) {
       const addedFavorite = await dispatch(fetchAddFavorite(productId))
+      if (!addedFavorite) {
+        alert("Item already in your favorites!")
+      }
       if (addedFavorite) {
         alert("Item added to your favorites!")
       }
