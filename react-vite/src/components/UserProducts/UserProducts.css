@@ -23,7 +23,7 @@
   }
 
   .user-product-name {
-    font-size: 1.5em;
+    font-size: large;
     margin-bottom: 20px;
     margin-top: 10px;
     color: #333;
@@ -50,17 +50,16 @@
   .update-product-user:hover {
     background-color: #0056b3;
   }
-
-  /* button {
-    background-color: #f44336;
+  .delete-user-product {
+    background-color: #007bff;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-right: 10px;
   }
-
-  button:hover {
-    background-color: #e53935;
-  } */
+   .delete-user-product:hover {
+    background-color: #0056b3;
+   }

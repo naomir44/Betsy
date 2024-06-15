@@ -37,7 +37,7 @@ const ProductReviews = () => {
                   modalComponent={<ReviewForm review={review} productId={review.product_id} />}
                   buttonText="Update"
                 />
-                <button onClick={() => handleDelete(review.id)}>Delete</button>
+                <button className='delete-review-button' onClick={() => handleDelete(review.id)}>Delete</button>
               </div>
             )}
           </div>

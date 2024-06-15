@@ -81,7 +81,7 @@ input[type=text], input[type=password], input[type=email] {
 
 .demo-login-button {
   width: 100%;
-  background-color: #ee9d09;
+  background-color: orange;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -91,5 +91,5 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .demo-login-button:hover {
-  background-color: #ffa909;
+  background-color: darkorange;
 }

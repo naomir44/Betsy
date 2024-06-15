@@ -18,7 +18,7 @@ function ProfileButton() {
   const navigate = useNavigate()
 
   const toggleMenu = (e) => {
-    e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
+    e.stopPropagation();
     setShowMenu(!showMenu);
   };
 
@@ -60,7 +60,7 @@ function ProfileButton() {
   }
 
   return (
-    <>
+    <div className="profile-button-container">
      <button className="fa-circle" onClick={toggleMenu}>
      <PiUserCirclePlusDuotone className="profile-icon"/>
       </button>
@@ -68,8 +68,8 @@ function ProfileButton() {
         <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <div>{user.username}</div>
-              <div>{user.email}</div>
+              {/* <div className="nav-username">Hello, {user.username}!</div>
+              <div className="nav-email">{user.email}</div> */}
               <div>
                 <button className='create-product-button' onClick={newProduct}>Create a New Product</button>
               </div>
@@ -77,7 +77,7 @@ function ProfileButton() {
                 <button className="edit-product-button" onClick={myProducts}>My Products</button>
               </div>
               <div>
-                <button onClick={logout}>Log Out</button>
+                <button className="nav-logout" onClick={logout}>Log Out</button>
               </div>
             </>
           ) : (
@@ -96,7 +96,7 @@ function ProfileButton() {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }
 

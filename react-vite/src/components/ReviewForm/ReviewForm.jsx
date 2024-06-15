@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createReview, editReview } from "../../redux/reviews";
 import { useModal } from "../../context/Modal";
+import './ReviewForm.css'
 
 const ReviewForm = ({ productId, review = null }) => {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ const ReviewForm = ({ productId, review = null }) => {
   };
 
   return (
+    <div className="review-modal-container">
     <form className="create-review" onSubmit={handleSubmit}>
       <label className="input-content">
         Tell us what you thought of this product
@@ -93,6 +95,7 @@ const ReviewForm = ({ productId, review = null }) => {
 
       <button type="submit">{review ? 'Update Review' : 'Submit Review'}</button>
     </form>
+    </div>
   );
 };
 

@@ -5,47 +5,96 @@
   border-bottom: 1px solid lightgray;
   padding-right: 20px;
 }
+
 .nav-items {
   display: flex;
   align-items: center;
   gap: 25px;
 }
+
+.profile-button-container {
+  position: relative;
+}
+
+.fa-circle {
+  border: none;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background-color 0.3s, padding 0.3s, margin 0.3s;
+  cursor: pointer;
+}
+
+.profile-icon {
+  height: 25px;
+  width: 25px;
+  text-decoration: none;
+}
+
+.fa-circle:hover {
+  background-color: lightblue;
+  border-radius: 50%;
+  padding: 15px;
+  margin: -10px;
+}
+
 .profile-dropdown {
   position: absolute;
   top: 50px;
   right: 0;
-  width: 275px;
-  background-color: white;
+  width: 250px;
+  background-color: #fff;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   z-index: 1000;
   cursor: pointer;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.profile-dropdown div {
-  margin-bottom: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-
-}
-
-.profile-dropdown div:last-child {
-  margin-bottom: 0;
-}
-
+.profile-dropdown div,
 .profile-dropdown button {
-  width: 100%;
-  background-color: black;
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.profile-dropdown button:hover {
-  background-color: #3b3e41;
+.nav-username,
+.nav-email {
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+}
+
+.create-product-button,
+.edit-product-button,
+.nav-logout {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 5px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.create-product-button:hover,
+.edit-product-button:hover,
+.nav-logout:hover {
+  background-color: #ddd;
+  color: #000;
 }
 
 .cart-image {
@@ -56,6 +105,7 @@
   transition: background-color 0.3s, padding 0.3s, margin 0.3s;
   cursor: pointer;
 }
+
 .cart-image:hover {
   background-color: lightblue;
   border-radius: 50%;
@@ -71,30 +121,14 @@
   transition: background-color 0.3s, padding 0.3s, margin 0.3s;
   cursor: pointer;
 }
-.heart-icon:hover{
+
+.heart-icon:hover {
   background-color: lightblue;
   border-radius: 50%;
   padding: 15px;
   margin: -10px;
 }
-.fa-circle {
-  border: none;
-  border-radius: 40px;
-  text-decoration: none;
-  transition: background-color 0.3s, padding 0.3s, margin 0.3s;
-  cursor: pointer;
-}
-.profile-icon {
-  height: 25px;
-  width: 25px;
-  text-decoration: none;
-}
-.fa-circle:hover {
-  background-color: lightblue;
-  border-radius: 50%;
-  padding: 15px;
-  margin: -10px;
-}
+
 .betsy-home {
   font-size: 40px;
   color: rgb(255, 153, 0);
