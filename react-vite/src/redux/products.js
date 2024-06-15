@@ -115,6 +115,7 @@ export const fetchUpdateProduct = (product, productId) => async (dispatch) => {
     if (res.ok) {
         const updatedProduct = await res.json()
         dispatch(updateProduct(updatedProduct))
+        dispatch(fetchProductDetails(productId))
         return updatedProduct
     }
 }

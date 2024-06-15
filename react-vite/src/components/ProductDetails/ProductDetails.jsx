@@ -15,7 +15,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const product = useSelector(state => state.products[productId]);
   const user = useSelector(state => state.session.user)
-  const favorites = useSelector(state => Object.values(state.favorites));
+  const userReviews = useSelector(state => Object.values(state.reviews).filter(review => review.user_id === user.id))
 
   useEffect(() => {
     if (productId) {
@@ -85,11 +85,12 @@ const ProductDetails = () => {
           <p>Arrives soon! Get it by <strong>Jun 18-22</strong> if you order today</p>
           <p>Returns & exchanges accepted</p>
         </div>
+        {userReviews.length === 0 &&
         <OpenModalButton
           modalComponent={<ReviewForm productId={productId} />}
           buttonText="Leave a Review"
           className="product-detail-button review-button"
-        />
+        />}
         <ProductReviews />
       </div>
     </div>

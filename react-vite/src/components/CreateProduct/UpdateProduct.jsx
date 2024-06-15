@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { fetchAddImage, fetchUpdateProduct } from "../../redux/products"
+import { fetchAddImage, fetchProductDetails, fetchUpdateProduct } from "../../redux/products"
 
 
 const UpdateProduct = () => {
@@ -41,11 +41,13 @@ const UpdateProduct = () => {
             }
             const updatedProduct = await dispatch(fetchUpdateProduct(payload, productId))
 
-            if (updatedProduct) {
+            if (updatedProduct && url.length > 0 && url !== product.images[0].url) {
                 await dispatch(fetchAddImage({
                     url: url,
                     product_id: productId
                 }))
+                navigate(`/products/${productId}`)
+            } else {
                 navigate(`/products/${productId}`)
             }
         }
@@ -97,7 +99,7 @@ const UpdateProduct = () => {
             </label>
             {errors.category && <p className="form-errors">{errors.category}</p>}
             <label className="input-image">
-                Add an Image
+                Add Another Image
                 <input
                 type="text"
                 value={url}

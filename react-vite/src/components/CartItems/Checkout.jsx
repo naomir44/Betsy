@@ -17,6 +17,7 @@ const Checkout = () => {
     }
 
     return (
+<<<<<<< HEAD
         <div className="checkout-modal">
             <div className="checkout-content">
                 <h1>Confirm your purchase of {total} items</h1>
@@ -27,6 +28,14 @@ const Checkout = () => {
             </div>
         </div>
     );
+=======
+        <>
+        <h1>Confirm your purchase of {total === 1 ? `${total} item` : `${total} items`}</h1>
+        <button onClick={handlePurchase}>Purchase</button>
+        <button onClick={closeModal}>Cancel</button>
+        </>
+    )
+>>>>>>> 2f83ce2806acc4e157c155bfa44b270ff66d1af0
 }
 
 export default Checkout
