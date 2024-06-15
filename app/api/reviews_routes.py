@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 
 reviews_bp = Blueprint('reviews', __name__)
 
-@reviews_bp.route('/products/<int:product_id>')
+@reviews_bp.route('/products/<int:product_id>/')
 def get_reviews(product_id):
     reviews = Review.query.filter_by(product_id=product_id).all()
     return jsonify([review.to_dict() for review in reviews])
@@ -28,7 +28,7 @@ def add_review(product_id):
     db.session.commit()
     return jsonify(new_review.to_dict()), 201
 
-@reviews_bp.route('/<int:review_id>', methods=['PUT'])
+@reviews_bp.route('/<int:review_id>/', methods=['PUT'])
 @login_required
 def update_review(review_id):
     data = request.get_json()
@@ -45,7 +45,7 @@ def update_review(review_id):
     db.session.commit()
     return jsonify(review.to_dict())
 
-@reviews_bp.route('/<int:review_id>', methods=['DELETE'])
+@reviews_bp.route('/<int:review_id>/', methods=['DELETE'])
 @login_required
 def delete_review(review_id):
     review = Review.query.get_or_404(review_id)

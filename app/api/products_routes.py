@@ -12,13 +12,13 @@ def get_products():
     products = Product.query.all()
     return jsonify([product.to_dict() for product in products])
 
-@products_bp.route('/<int:id>')
+@products_bp.route('/<int:id>/')
 def get_product(id):
     product = Product.query.get_or_404(id)
     return jsonify(product.to_dict())
 
 
-@products_bp.route('/new', methods=["POST"])
+@products_bp.route('/new/', methods=["POST"])
 @login_required
 def create_product():
     data = request.get_json()
@@ -38,7 +38,7 @@ def create_product():
 
     return jsonify(new_product.to_dict()), 201
 
-@products_bp.route('/new/image', methods=["POST"])
+@products_bp.route('/new/image/', methods=["POST"])
 @login_required
 def create_image():
     data = request.get_json()
@@ -52,7 +52,7 @@ def create_image():
     return jsonify(new_image.to_dict()), 201
 
 
-@products_bp.route('/<int:id>/edit', methods=['PUT'])
+@products_bp.route('/<int:id>/edit/', methods=['PUT'])
 @login_required
 def update_product(id):
     data = request.json
@@ -72,7 +72,7 @@ def update_product(id):
     db.session.commit()
     return jsonify(product.to_dict())
 
-@products_bp.route('/<int:id>/delete', methods=['DELETE'])
+@products_bp.route('/<int:id>/delete/', methods=['DELETE'])
 @login_required
 def delete_product(id):
     product = Product.query.get_or_404(id)

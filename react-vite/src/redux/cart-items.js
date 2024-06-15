@@ -16,7 +16,7 @@ const addCartItem = (cartItem) => {
 }
 
 export const fetchCartItems = () => async (dispatch) => {
-    const res = await fetch('/api/cart')
+    const res = await fetch('/api/cart/')
 
     if (res.ok) {
         const cartItems = await res.json()

@@ -12,7 +12,7 @@ def get_favorites():
     products = [favorite.products.to_dict() for favorite in favorites]
     return jsonify(products)
 
-@favorites_bp.route('/new/<int:id>', methods=['POST'])
+@favorites_bp.route('/new/<int:id>/', methods=['POST'])
 @login_required
 def add_favorite(product_id):
     user_id = current_user.id
@@ -27,7 +27,7 @@ def add_favorite(product_id):
     db.session.commit()
     return jsonify({'message': 'Product added to favorites'}), 201
 
-@favorites_bp.route('/<int:product_id>', methods=['DELETE'])
+@favorites_bp.route('/<int:product_id>/', methods=['DELETE'])
 @login_required
 def remove_favorite(product_id):
     user_id = current_user.id

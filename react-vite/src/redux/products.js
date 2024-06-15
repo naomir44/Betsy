@@ -49,7 +49,7 @@ const deleteProduct = productId => {
 }
 
 export const fetchProducts = () => async (dispatch) => {
-    const res = await fetch('/api/products')
+    const res = await fetch('/api/products/')
 
     if (res.ok) {
         const products = await res.json()
@@ -59,7 +59,7 @@ export const fetchProducts = () => async (dispatch) => {
 }
 
 export const fetchProductDetails = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}`)
+    const res = await fetch(`/api/products/${productId}/`)
 
     if (res.ok) {
         const product = await res.json()
@@ -69,7 +69,7 @@ export const fetchProductDetails = (productId) => async (dispatch) => {
 }
 
 export const fetchCreateProduct = (product) => async (dispatch) => {
-    const res = await fetch('/api/products/new', {
+    const res = await fetch('/api/products/new/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ export const fetchCreateProduct = (product) => async (dispatch) => {
 }
 
 export const fetchAddImage = (image) => async (dispatch) => {
-    const res = await fetch('/api/products/new/image', {
+    const res = await fetch('/api/products/new/image/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ export const fetchAddImage = (image) => async (dispatch) => {
 }
 
 export const fetchUpdateProduct = (product, productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}/edit`, {
+    const res = await fetch(`/api/products/${productId}/edit/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -120,7 +120,7 @@ export const fetchUpdateProduct = (product, productId) => async (dispatch) => {
 }
 
 export const fetchDeleteProduct = (productId) => async (dispatch) => {
-    const res = await fetch(`/api/products/${productId}/delete`, {
+    const res = await fetch(`/api/products/${productId}/delete/`, {
         method: 'DELETE'
     })
     if (res.ok) {

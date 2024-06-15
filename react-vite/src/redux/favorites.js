@@ -24,7 +24,7 @@ const removeFavorite = (favoriteId) => {
 };
 
 export const fetchFavorites = () => async (dispatch) => {
-  const res = await fetch(`/api/favorites`);
+  const res = await fetch(`/api/favorites/`);
 
   if (res.ok) {
     const favorites = await res.json();
@@ -34,7 +34,7 @@ export const fetchFavorites = () => async (dispatch) => {
 };
 
 export const fetchAddFavorite = (productId) => async (dispatch) => {
-  const res = await fetch(`/api/favorites/new/${productId}`, {
+  const res = await fetch(`/api/favorites/new/${productId}/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export const fetchAddFavorite = (productId) => async (dispatch) => {
 };
 
 export const fetchRemoveFavorite = (productId) => async (dispatch) => {
-  const res = await fetch(`/api/favorites/${productId}`, {
+  const res = await fetch(`/api/favorites/${productId}/`, {
     method: 'DELETE',
   });
 
