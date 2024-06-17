@@ -79,3 +79,10 @@
     font-size: 0.9em;
     color: #666;
   }
+
+  .leave-review-button {
+    background-color: orange;
+  }
+  .leave-review-button:hover {
+    background-color: darkorange;
+  }

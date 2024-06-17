@@ -28,8 +28,8 @@ const DeleteProduct = ({ productId }) => {
                         <div className="error-message">{errors.message}</div>
                     )}
                     <div className="delete-actions">
+                    <button className="delete-button cancel-button" onClick={closeModal}>No (Keep It)</button>
                         <button className="delete-button" onClick={handleClick}>Yes (Delete It)</button>
-                        <button className="delete-button cancel-button" onClick={closeModal}>No (Keep It)</button>
                     </div>
                 </form>
             </div>

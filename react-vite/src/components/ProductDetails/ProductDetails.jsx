@@ -28,7 +28,7 @@ const ProductDetails = () => {
     if (user){
       dispatch(fetchFavorites())
     }
-  }, [dispatch])
+  }, [dispatch, user])
 
   const addToCart = async () => {
     if (user) {
@@ -92,7 +92,6 @@ const ProductDetails = () => {
         <OpenModalButton
           modalComponent={<ReviewForm productId={productId} />}
           buttonText="Leave a Review"
-          className="product-detail-button review-button"
         />}
         <ProductReviews />
       </div>

@@ -17,7 +17,7 @@ const CartItems = () => {
         if (user) {
             dispatch(fetchCartItems())
         }
-    }, [dispatch])
+    }, [dispatch, user])
 
     const handleDelete = (productId) => {
         dispatch(fetchDeleteCart(productId))
@@ -93,7 +93,6 @@ const CartItems = () => {
             <OpenModalButton
                 modalComponent={<Checkout />}
                 buttonText='Checkout'
-                className="checkout-button"
             />
         </div>
     )

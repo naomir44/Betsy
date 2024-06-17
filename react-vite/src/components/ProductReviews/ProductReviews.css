@@ -1,5 +1,5 @@
 .delete-review-button {
-  background-color: orange;
+  background-color: #dc3545;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -9,5 +9,11 @@
     margin-right: 10px;
 }
 .delete-review-button:hover {
-  background-color: darkorange;
+  background-color: #c82333;
+}
+.update-review-button {
+  background-color: #007bff;
+}
+.update-review-button:hover {
+  background-color: #0056b3;
 }

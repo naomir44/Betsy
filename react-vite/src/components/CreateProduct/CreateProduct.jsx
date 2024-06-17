@@ -51,6 +51,8 @@ const CreateProduct = () => {
     };
 
     return (
+        <>
+        <h1 className="create-new-pro-h1">Create A New Product!</h1>
         <form className="create-product-form" onSubmit={handleSubmit}>
             <label className="input-name">
                 Product Name
@@ -107,6 +109,7 @@ const CreateProduct = () => {
             {errors.url && <p className="form-errors">{errors.url}</p>}
             <button className="product-form-submit" type="submit">Create Product</button>
         </form>
+        </>
     );
 };
 

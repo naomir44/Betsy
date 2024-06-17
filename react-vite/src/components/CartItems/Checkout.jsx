@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { fetchPurchaseCart, fetchDeleteCart } from "../../redux/cart-items"
+import { fetchPurchaseCart } from "../../redux/cart-items"
 import { useModal } from "../../context/Modal"
 
 const Checkout = () => {

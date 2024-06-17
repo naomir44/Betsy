@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { fetchAddImage, fetchProductDetails, fetchUpdateProduct } from "../../redux/products"
+import { fetchAddImage, fetchUpdateProduct } from "../../redux/products"
 
 
 const UpdateProduct = () => {

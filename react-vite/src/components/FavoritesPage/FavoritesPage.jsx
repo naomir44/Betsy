@@ -17,7 +17,7 @@ const FavoritesPage = () => {
     } else {
       setLoading(false)
     }
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   const handleRemoveFavorite = (productId) => {
     dispatch(fetchRemoveFavorite(productId));

@@ -6,6 +6,8 @@ body {
 }
 .cart-items-h1 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #333;
   font-weight: lighter;
 }
 .empty-cart-signin {
@@ -68,8 +70,7 @@ body {
   border-radius: 5px;
 }
 
-.cart-item-quantity button,
-.cart-item-card button {
+.cart-item-quantity button {
   padding: 5px 10px;
   border: none;
   background-color: orange;
@@ -78,13 +79,17 @@ body {
   cursor: pointer;
 }
 
-.cart-item-quantity button:hover,
-.cart-item-card button:hover {
+.cart-item-quantity button:hover {
   background-color: darkorange;
 }
 
 .cart-item-remove {
   background-color: #dc3545;
+  padding: 5px 10px;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .cart-item-remove:hover {

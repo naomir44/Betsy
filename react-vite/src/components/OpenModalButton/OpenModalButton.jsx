@@ -1,5 +1,7 @@
 import { useModal } from '../../context/Modal';
-// import './Navigation.css'
+import '../ProductDetails/ProductDetails.css';
+import '../UserProducts/UserProducts.css';
+import '../ProductReviews/ProductReviews.css';
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal
@@ -15,7 +17,7 @@ function OpenModalButton({
     if (typeof onButtonClick === "function") onButtonClick();
   };
 
-  return <button className='update-button delete-user-product' onClick={onClick}>{buttonText}</button>;
+  return <button className='update-review-button delete-user-product open-modal-checkout leave-review-button' onClick={onClick}>{buttonText}</button>;
 }
 
 export default OpenModalButton;
