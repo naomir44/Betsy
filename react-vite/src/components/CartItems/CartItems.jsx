@@ -9,12 +9,14 @@ import './CartItems.css'
 const CartItems = () => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
-    const cartItems = useSelector((state) => Object.values(state.cartItems).filter(items => items.user_id === user.id))
+    const cartItems = useSelector((state) => Object.values(state.cartItems).filter(items => items.user_id === user?.id))
     const [editingItemId, setEditingItemId] = useState(null)
     const [quantity, setQuantity] = useState(1)
 
     useEffect(() => {
-        dispatch(fetchCartItems())
+        if (user) {
+            dispatch(fetchCartItems())
+        }
     }, [dispatch])
 
     const handleDelete = (productId) => {
@@ -60,7 +62,7 @@ const CartItems = () => {
 
     return (
         <div className="cart-container">
-            <h1>Cart Items</h1>
+            <h1 className="cart-items-h1">Cart Items</h1>
             {cartItems.map(item => (
                 <div key={item.products.name} className="cart-item-card">
                     <img className="cart-item-image" src={item.products.images[0].url} alt={item.products.name} />

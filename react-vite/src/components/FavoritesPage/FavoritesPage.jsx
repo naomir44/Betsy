@@ -34,7 +34,7 @@ const FavoritesPage = () => {
     return <div>Loading...</div>;
   }
   if (!user) {
-    return <h1>Sign in to add your favorite products!</h1>
+    return <h1 className='fav-signin-before'>Sign in to add your favorite products!</h1>
   }
 
   return (

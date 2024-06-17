@@ -126,3 +126,10 @@
   font-weight: lighter;
   font-family: Arial, Helvetica, sans-serif;
 }
+.fav-signin-before {
+  text-align: center;
+  margin-top: 20px;
+  color: gray;
+  font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
+}

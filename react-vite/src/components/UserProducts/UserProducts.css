@@ -6,6 +6,10 @@
     padding: 20px;
     background-color: #f9f9f9;
   }
+  .your-products-h1 {
+    text-align: center;
+    font-weight: lighter;
+  }
 
   .user-product-card {
     background-color: #fff;
@@ -51,7 +55,7 @@
     background-color: darkorange;
   }
   .delete-user-product {
-    background-color: orange;
+    background-color: #dc3545;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -61,5 +65,5 @@
     margin-right: 10px;
   }
    .delete-user-product:hover {
-    background-color: darkorange;
+    background-color: #c82333;
    }
