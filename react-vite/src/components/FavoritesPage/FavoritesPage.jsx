@@ -12,7 +12,11 @@ const FavoritesPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchFavorites()).then(() => setLoading(false));
+    if (user) {
+      dispatch(fetchFavorites()).then(() => setLoading(false));
+    } else {
+      setLoading(false)
+    }
   }, [dispatch]);
 
   const handleRemoveFavorite = (productId) => {

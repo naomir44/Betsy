@@ -15,7 +15,7 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const product = useSelector(state => state.products[productId]);
   const user = useSelector(state => state.session.user)
-  const userReviews = useSelector(state => Object.values(state.reviews).filter(review => review.user_id === user.id))
+  const userReviews = useSelector(state => Object.values(state.reviews).filter(review => review.user_id === user?.id))
   const checkUserReviews = userReviews.find(review => review.product_id === productId)
 
   useEffect(() => {
@@ -25,7 +25,9 @@ const ProductDetails = () => {
   }, [dispatch, productId]);
 
   useEffect(() => {
-    dispatch(fetchFavorites())
+    if (user){
+      dispatch(fetchFavorites())
+    }
   }, [dispatch])
 
   const addToCart = async () => {
