@@ -33,6 +33,9 @@ const FavoritesPage = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  if (!user) {
+    return <h1>Sign in to add your favorite products!</h1>
+  }
 
   return (
     <div className='fav-container'>
