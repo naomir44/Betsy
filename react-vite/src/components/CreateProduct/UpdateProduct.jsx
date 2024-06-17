@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
-import { fetchAddImage, fetchUpdateProduct } from "../../redux/products"
+import { fetchAddImage, fetchProductDetails, fetchUpdateProduct } from "../../redux/products"
 
 
 const UpdateProduct = () => {
@@ -46,8 +46,10 @@ const UpdateProduct = () => {
                     url: url,
                     product_id: productId
                 }))
+                await dispatch(fetchProductDetails(productId))
                 navigate(`/products/${productId}`)
             } else {
+                await dispatch(fetchProductDetails(productId))
                 navigate(`/products/${productId}`)
             }
         }
@@ -78,7 +80,7 @@ const UpdateProduct = () => {
             <label className="input-price">
                 Price
                 <input
-                    type="number"
+                    type="text"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     placeholder="Price"
