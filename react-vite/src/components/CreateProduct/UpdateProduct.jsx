@@ -26,7 +26,7 @@ const UpdateProduct = () => {
         if (name.length === 0) validationErrors.name = 'Give your product a name'
         if (description.length === 0) validationErrors.description = 'Give your product a description'
         if (price === 0) validationErrors.price = 'Your product needs a price'
-        if (!category) validationErrors.categories = 'Must select a category'
+        if (!category) validationErrors.category = 'Must select a category'
 
         if (Object.values(validationErrors).length > 0) {
             setErrors(validationErrors)

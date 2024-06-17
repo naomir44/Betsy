@@ -23,7 +23,8 @@ const CreateProduct = () => {
         if (name.length === 0) validationErrors.name = 'Give your product a name';
         if (description.length === 0) validationErrors.description = 'Give your product a description';
         if (price === 0) validationErrors.price = 'Your product needs a price';
-        if (!category) validationErrors.categories = 'Must select a category';
+        if (!category) validationErrors.category = 'Must select a category';
+        if (!url) validationErrors.url = 'Add a photo of your product'
 
         if (Object.values(validationErrors).length > 0) {
             setErrors(validationErrors);
@@ -103,6 +104,7 @@ const CreateProduct = () => {
                     placeholder="Image URL"
                 />
             </label>
+            {errors.url && <p className="form-errors">{errors.url}</p>}
             <button className="product-form-submit" type="submit">Create Product</button>
         </form>
     );
