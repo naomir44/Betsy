@@ -86,3 +86,9 @@
   .leave-review-button:hover {
     background-color: darkorange;
   }
+
+  .not-signed-in {
+    color: #333;
+    font-weight: bold;
+    font-size: larger;
+  }

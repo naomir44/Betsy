@@ -68,6 +68,8 @@ const ProductDetails = () => {
     return <div>Loading...</div>;
   }
 
+  const ownsProduct = product.user_id === user?.id
+
   return (
     <div className="product-detail-page">
       <div className="product-detail-image-section">
@@ -88,11 +90,18 @@ const ProductDetails = () => {
           <p>Arrives soon! Get it by <strong>Jun 18-22</strong> if you order today</p>
           <p>Returns & exchanges accepted</p>
         </div>
-        {!checkUserReviews &&
-        <OpenModalButton
+        { !user ? (
+          <div className='not-signed-in'>Sign in to leave a review</div>
+        ) : ownsProduct ? (
+          null
+        ) : checkUserReviews ? (
+          null
+        ) : (
+          <OpenModalButton
           modalComponent={<ReviewForm productId={productId} />}
           buttonText="Leave a Review"
-        />}
+        />
+        )}
         <ProductReviews />
       </div>
     </div>
