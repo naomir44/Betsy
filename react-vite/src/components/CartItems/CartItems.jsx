@@ -40,12 +40,12 @@ const CartItems = () => {
         }
     }
 
-    if (!cartItems) {
-        return <div>Loading...</div>;
-    }
-
     if (!user) {
         return <h1>Sign in to add items to your cart!</h1>
+    }
+
+    if (!cartItems) {
+        return <div>Loading...</div>;
     }
 
     if (cartItems.length === 0) {
