@@ -16,6 +16,8 @@ const UserProducts = () => {
     }, [dispatch])
 
     return (
+      <>
+      <h1>Your Products</h1>
         <div className="user-product-container">
           {products.map(product => (
             <div key={product.id} className="user-product-card">
@@ -33,6 +35,7 @@ const UserProducts = () => {
             </div>
           ))}
         </div>
+      </>
       );
 }
 

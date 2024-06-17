@@ -36,7 +36,7 @@ const FavoritesPage = () => {
 
   return (
     <div className='fav-container'>
-      <h1 className='fav-items-title'>Favorite items</h1>
+      <h1 className='fav-items-title'>Your Favorite Items</h1>
       <span className='fav-items-quantity'>{favorites.length} item{favorites.length !== 1 ? 's' : ''}</span>
       <ul className='fav-list'>
         {favorites.map(product => (
