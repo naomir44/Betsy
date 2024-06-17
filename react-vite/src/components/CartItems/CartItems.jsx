@@ -41,7 +41,7 @@ const CartItems = () => {
     }
 
     if (!user) {
-        return <h1>Sign in to add items to your cart!</h1>
+        return <h1 className="empty-cart-signin">Sign in to add items to your cart!</h1>
     }
 
     if (!cartItems) {

@@ -8,8 +8,9 @@ body {
 h1 {
   text-align: center;
   margin-top: 20px;
-  color: #333;
+  color: gray;
   font-weight: lighter;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .cart-container {
@@ -196,4 +197,9 @@ h1 {
 .checkout-button:focus,
 .cancel-button:focus {
   outline: none;
+}
+.empty-cart-signin {
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
+  font-weight: lighter;
 }
