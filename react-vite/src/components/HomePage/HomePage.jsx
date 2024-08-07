@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCategories } from '../../redux/categories';
-import './HomePage.css';
+import './Homepage.css'
 
 const HomePage = () => {
   const dispatch = useDispatch();
