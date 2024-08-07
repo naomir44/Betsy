@@ -2,7 +2,15 @@
 
 Checkout a live version of Betsy here: https://betsy-k8i7.onrender.com/
 
-Betsy is a clone of the E-commerce sight, Etsy. The backend of Betsy is built with Flask, while the frontend is built with React.
+Betsy is a clone of the E-commerce sight, Etsy. After signing up, Users can buy and sell any type of product, favorite products to view them later, and leave reviews on products.
+
+## Technologies Used
+
+-   **Backend:** Flask, PostgreSQL
+-   **Frontend:** React, Redux
+
+## DataBase Schema
+![Schema](./screenshots/Betsy-db.png)
 
 ## Features
 
