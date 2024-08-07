@@ -1,6 +1,6 @@
 # Betsy
 
-Checkout a live version of Betsy here: https://betsy-k8i7.onrender.com/
+Checkout a live version of Betsy here: https://betsy-5yhs.onrender.com
 
 Betsy is a clone of the E-commerce sight, Etsy. After signing up, Users can buy and sell any type of product, favorite products to view them later, and leave reviews on products.
 
